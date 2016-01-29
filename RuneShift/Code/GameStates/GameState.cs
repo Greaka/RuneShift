@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace RuneShift
 {
-    class Program
+    enum GameState
     {
-        static void Main(string[] args)
-        {
-        }
+        None,
+        Intro,
+        MainMenu,
+        InGame,
+        Reset,
     }
 }
