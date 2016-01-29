@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="sfmlnet-audio-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\sfmlnet-audio-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-graphics-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\sfmlnet-graphics-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-window-2, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\sfmlnet-window-2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,11 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Code\AnimatedSprite.cs" />
+    <Compile Include="Code\AssetManager.cs" />
+    <Compile Include="Code\GameStates\GameState.cs" />
+    <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\IngameElements\Player.cs" />
+    <Compile Include="Code\GameStates\InGameState.cs" />
+    <Compile Include="Code\GameStates\MainMenuState.cs" />
+    <Compile Include="Code\GUI.cs" />
+    <Compile Include="Code\KeyboardInputManager.cs" />
+    <Compile Include="Code\Program.cs" />
+    <Compile Include="Code\Utility\GameTime.cs" />
+    <Compile Include="Code\Utility\Helper.cs" />
+    <Compile Include="Code\Utility\Rand.cs" />
+    <Compile Include="Code\Utility\Vector2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Fonts\calibri.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="csfml-audio-2.dll">
