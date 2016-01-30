@@ -45,6 +45,31 @@ namespace RuneShift
             }
         }
 
+        public Rune GetNearestRune(Vector2 position)
+        {
+            float temp;
+            return GetNearestRune(position, out temp);
+        }
+
+        public Rune GetNearestRune(Vector2 position, out float distance)
+        {
+            Rune result = null;
+            float minDistance = float.MaxValue;
+
+            foreach (Rune rune in Runes)
+            {
+                float dist = Vector2.distanceSqr(position, rune.Position);
+                if(dist < minDistance)
+                {
+                    minDistance = dist;
+                    result = rune;
+                }
+            }
+
+            distance = minDistance;
+            return result;
+        }
+
         public void Draw(RenderWindow win)
         {
             foreach (Rune rune in Runes)
