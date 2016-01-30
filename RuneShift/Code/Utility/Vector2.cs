@@ -11,6 +11,13 @@ public struct Vector2
         Y = y;
     }
 
+    /// <summary>downcast from double to float</summary>
+    public Vector2(double x, double y)
+    {
+        X = (float)x;
+        Y = (float)y;
+    }
+
     public override string ToString()
     {
         return "(" + X + ", " + Y + ")";

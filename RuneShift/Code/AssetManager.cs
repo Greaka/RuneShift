@@ -16,97 +16,36 @@ public class AssetManager
 
     static void LoadTextures()
     {
-        textures.Add(TextureName.WhitePixel, new Texture("Assets/Textures/pixel.png"));
-        textures.Add(TextureName.MainMenuBackground, new Texture("Assets/Textures/Background.png"));
-        textures[TextureName.MainMenuBackground].Smooth = true;
+        textures.Add(TextureName.InGameBackground, new Texture("Graphics/background.png"));
 
-        textures.Add(TextureName.ShoopWheel, new Texture("Assets/Textures/Wheel.png"));
-        textures.Add(TextureName.ShoopRed, new Texture("Assets/Textures/SheepRed.png"));
-        textures.Add(TextureName.ShoopGreen, new Texture("Assets/Textures/SheepGreen.png"));
+        textures.Add(TextureName.Circle0_Innermost, new Texture("Graphics/circle0.png"));
+        textures.Add(TextureName.Circle1, new Texture("Graphics/circle1.png"));
+        textures.Add(TextureName.Circle2, new Texture("Graphics/circle2.png"));
+        textures.Add(TextureName.Circle3, new Texture("Graphics/circle3.png"));
 
+        textures.Add(TextureName.EnergyParticle, new Texture("Graphics/Particle.png"));
 
-        textures.Add(TextureName.Hand, new Texture("Assets/Textures/Hands/Hand1/Base.png"));
-
-        textures.Add(TextureName.LeftThumb_Leftmost, new Texture("Assets/Textures/Hands/Hand1/leftThumb_leftmost.png"));
-        textures.Add(TextureName.LeftThumb_Left, new Texture("Assets/Textures/Hands/Hand1/leftThumb_left.png"));
-        textures.Add(TextureName.LeftThumb_Mid, new Texture("Assets/Textures/Hands/Hand1/leftThumb_mid.png"));
-        textures.Add(TextureName.LeftThumb_Right, new Texture("Assets/Textures/Hands/Hand1/leftThumb_right.png"));
-        textures.Add(TextureName.LeftThumb_Rightmost, new Texture("Assets/Textures/Hands/Hand1/leftThumb_rightmost.png"));
-
-        textures.Add(TextureName.RightThumb_Leftmost, new Texture("Assets/Textures/Hands/Hand1/rightThumb_leftmost.png"));
-        textures.Add(TextureName.RightThumb_Left, new Texture("Assets/Textures/Hands/Hand1/rightThumb_left.png"));
-        textures.Add(TextureName.RightThumb_Mid, new Texture("Assets/Textures/Hands/Hand1/rightThumb_mid.png"));
-        textures.Add(TextureName.RightThumb_Right, new Texture("Assets/Textures/Hands/Hand1/rightThumb_right.png"));
-        textures.Add(TextureName.RightThumb_Rightmost, new Texture("Assets/Textures/Hands/Hand1/rightThumb_rightmost.png"));
-
-        textures.Add(TextureName.LeftFinger_Down, new Texture("Assets/Textures/Hands/Hand1/leftFinger_down.png"));
-        textures.Add(TextureName.LeftFinger_Up, new Texture("Assets/Textures/Hands/Hand1/leftFinger_up.png"));
-        textures.Add(TextureName.RightFinger_Down, new Texture("Assets/Textures/Hands/Hand1/rightFinger_down.png"));
-        textures.Add(TextureName.RightFinger_Up, new Texture("Assets/Textures/Hands/Hand1/rightFinger_up.png"));
-
-        textures.Add(TextureName.Jumpbar1, new Texture("Assets/Textures/Hands/Hand1/Jumpbar1.png"));
-        textures.Add(TextureName.Jumpbar2, new Texture("Assets/Textures/Hands/Hand1/Jumpbar2.png"));
-        textures.Add(TextureName.Jumpbar3, new Texture("Assets/Textures/Hands/Hand1/Jumpbar3.png"));
-        textures.Add(TextureName.Jumpbar4, new Texture("Assets/Textures/Hands/Hand1/Jumpbar4.png"));
-        textures.Add(TextureName.Jumpbar5, new Texture("Assets/Textures/Hands/Hand1/Jumpbar5.png"));
-        textures.Add(TextureName.Jumpbar6, new Texture("Assets/Textures/Hands/Hand1/Jumpbar6.png"));
-
-        textures.Add(TextureName.RemoteFlagGreen, new Texture("Assets/Textures/Hands/Hand1/FlagGreen.png"));
-        textures.Add(TextureName.RemoteFlagRed, new Texture("Assets/Textures/Hands/Hand1/FlagRed.png"));
-        textures.Add(TextureName.RemoteFlagWhitePart, new Texture("Assets/Textures/Hands/Hand1/FlagWhitePart.png"));
-
-
-        textures.Add(TextureName.FlagRed, new Texture("Assets/Textures/flagRed.png"));
-        textures.Add(TextureName.FlagGreen, new Texture("Assets/Textures/flagGreen.png"));
-        textures.Add(TextureName.FlagGray, new Texture("Assets/Textures/flagGray.png"));
-
-        textures.Add(TextureName.InGameBackGroundBack, new Texture("Assets/Textures/backgroundBack.png"));
-        textures.Add(TextureName.InGameBackGroundFront, new Texture("Assets/Textures/backgroundFront.png"));
-
+        textures.Add(TextureName.RuneFire, new Texture("Graphics/rune1.png"));
+        textures.Add(TextureName.RuneWater, new Texture("Graphics/rune2.png"));
+        textures.Add(TextureName.RuneAir, new Texture("Graphics/rune3.png"));
+        textures.Add(TextureName.RuneEarth, new Texture("Graphics/rune4.png"));
     }
 
     public enum TextureName
     {
-        WhitePixel,
-        MainMenuBackground,
+        InGameBackground,
 
-        //characterStuff
-        ShoopWheel,
-        ShoopGreen,
-        ShoopRed,
-
-        Hand,
-        LeftThumb_Leftmost,
-        LeftThumb_Left,
-        LeftThumb_Mid,
-        LeftThumb_Right,
-        LeftThumb_Rightmost,
-        RightThumb_Leftmost,
-        RightThumb_Left,
-        RightThumb_Mid,
-        RightThumb_Right,
-        RightThumb_Rightmost,
-        LeftFinger_Down,
-        LeftFinger_Up,
-        RightFinger_Down,
-        RightFinger_Up,
-
-        Jumpbar1,
-        Jumpbar2,
-        Jumpbar3,
-        Jumpbar4,
-        Jumpbar5,
-        Jumpbar6,
-
-        RemoteFlagGreen,
-        RemoteFlagRed,
-        RemoteFlagWhitePart,
-
-        FlagRed,
-        FlagGreen,
-        FlagGray,
-
-        InGameBackGroundBack,
-        InGameBackGroundFront,
+        Circle0_Innermost,
+        Circle1,
+        Circle2,
+        Circle3,
+        
+        EnergyParticle,
+        
+        RuneFire,
+        RuneWater,
+        RuneAir,
+        RuneEarth,
+        
     }
 }

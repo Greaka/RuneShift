@@ -5,13 +5,17 @@ namespace RuneShift
 {
     class MainMenuState : IGameState
     {
+        Text PressEnterText;
+
         public MainMenuState()
         {
+            PressEnterText = new Text("Press Enter", new Font("Fonts/calibri.ttf"));
+            PressEnterText.Position = new Vector2(300, 400);
         }
 
         public GameState update()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Return))
+            if (KeyboardInputManager.upward(Keyboard.Key.Return))
             {
                 return GameState.InGame;
             }
@@ -25,6 +29,7 @@ namespace RuneShift
 
         public void drawGUI(GUI gui)
         {
+            gui.Draw(PressEnterText);
         }
     }
 }

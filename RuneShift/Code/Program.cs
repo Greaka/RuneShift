@@ -11,8 +11,8 @@ namespace RuneShift
 
         static bool running = true;
 
-        static GameState currentGameState = GameState.MainMenu;
-        static GameState prevGameState = GameState.InGame;//changed
+        static GameState currentGameState = GameState.InGame;
+        static GameState prevGameState = GameState.InGame;
         static IGameState state;
 
         static RenderWindow win;
@@ -45,7 +45,8 @@ namespace RuneShift
             {
                 KeyboardInputManager.update();
 
-                if (currentGameState == GameState.InGame) { inGameFrameCount++; }
+                if (currentGameState == GameState.InGame) 
+                { inGameFrameCount++; }
                 currentGameState = state.update();
 
                 if (currentGameState != prevGameState)
@@ -53,14 +54,14 @@ namespace RuneShift
                     handleNewGameState();
                 }
 
-                // draw current frame
+                // gather draw-stuff
                 win.Clear(new Color(100, 149, 237));    //cornflowerblue ftw!!! 1337
                 state.draw(win, view);
                 state.drawGUI(gui);
 
                 // some DebugText
                 debugText.DisplayedString = "fps: " + (1.0F / gameTime.EllapsedTime.TotalSeconds);
-                win.Draw(debugText);
+                gui.Draw(debugText);
 
                 // do the actual drawing
                 win.SetView(view);

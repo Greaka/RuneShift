@@ -11,21 +11,18 @@ namespace RuneShift
 {
     public class Player
     {
-        RectangleShape sprite;
+        Sprite sprite;
         Vector2f position { get { return sprite.Position; } set { sprite.Position = value; } }
         Vector2f movement { get; set; }
-        Vector2f size { get { return sprite.Size; } set { sprite.Size = value; } }
 
 
         public Player(Vector2f position)
         {
-            this.sprite = new RectangleShape(new Vector2f(1F, 1F));
-            this.sprite.FillColor = Color.Black;
+            this.sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.RuneEarth));
+            this.sprite.Scale = new Vector2(0.1F, 0.1F);
 
             this.position = position;
             this.movement = new Vector2f(0F, 0F);
-            
-            this.size = new Vector2f(100F, 100F);
         }
 
         public void update()
