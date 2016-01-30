@@ -20,15 +20,18 @@ namespace RuneShift
 
         public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
         {
+            // Sprite Stuff
             Sprite = new Sprite(texture);
             Sprite.Origin = (Vector2)Sprite.Texture.Size / 2F;
             Sprite.Scale = Vector2.One * 0.08F;
 
+            // Rotation
             this.Radius = radius;
             this.Rotation = 0F;
 
             RotationSpeed = (rotationDirection == RotationDirection.Clockwise ? -1F : 1F) * Rand.Value(0.0005F, 0.001F);
 
+            // Create Runes
             for (int i = 0; i < RuneCount; ++i)
             {
                 Runes.Add(CreateRandomRune(Vector2.Zero));

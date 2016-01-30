@@ -22,7 +22,7 @@ namespace RuneShift
         public Rune(Vector2 position, Texture stoneTexture, Texture glowTexture)
         {
             this.Sprite = new Sprite(stoneTexture);
-            this.Sprite.Scale = Vector2.One * 0.01F;
+            this.Sprite.Scale = Vector2.One * 0.008F;
             Sprite.Origin = ((Vector2)Sprite.Texture.Size) / 2F;
 
             StoneTexture = stoneTexture;
@@ -35,8 +35,10 @@ namespace RuneShift
         {
             if(Sprite != null)
             {
+                /*
                 Sprite.Texture = StoneTexture;
                 win.Draw(Sprite);
+                */
                 Sprite.Texture = GlowTexture;
                 win.Draw(Sprite);
             }
@@ -50,7 +52,7 @@ namespace RuneShift
         {
             debugGrphic.FillColor = Color.Red;
             debugGrphic.Position = Position - ((Vector2)debugGrphic.Size / 2F);
-            win.Draw(debugGrphic);
+            //win.Draw(debugGrphic);
 
             foreach (Rune adjacentRune in AdjacentRunes)
             {
