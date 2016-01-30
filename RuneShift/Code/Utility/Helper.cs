@@ -1,4 +1,5 @@
 ﻿using SFML.Graphics;
+using SFML.Window;
 using System;
 using System.Collections.Generic;
 
@@ -40,5 +41,27 @@ class Helper
             return max;
         else
             return f;
+    }
+
+    public static Vector2 ScreenToGameCoordinate(Vector2 ScreenCoordinate, View view, Window win)
+    {
+        Vector2 coordinate = ScreenCoordinate;
+
+        // normalize to windowSpace [0, 1]
+        coordinate /= win.Size;
+
+        // invert y-coordinate (since window y-direction points downward)
+        coordinate.Y = 1F - coordinate.Y;
+
+        // shift center [-0.5, 0.5]
+        coordinate -= Vector2.One * 0.5F;
+
+        // shift to view-center
+        coordinate -= (Vector2)view.Center;
+
+        // scale according to view
+        coordinate *= view.Size;
+
+        return coordinate;
     }
 }

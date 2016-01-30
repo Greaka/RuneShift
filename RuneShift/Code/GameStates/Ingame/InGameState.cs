@@ -25,9 +25,12 @@ namespace RuneShift
 
         public void draw(RenderWindow win, View view)
         {
+            Console.WriteLine(Helper.ScreenToGameCoordinate(win.InternalGetMousePosition(), view, win));
+            
             if (resetView)
             {
                 view.Center = Vector2.Zero;
+                view.Zoom(100F / view.Size.Y);
                 resetView = false;
             }
 
