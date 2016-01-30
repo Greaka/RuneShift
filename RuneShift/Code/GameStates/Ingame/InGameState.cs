@@ -25,7 +25,7 @@ namespace RuneShift
             this.Map = new Map();
             resetView = true;
 
-            ParticleManager = new ParticleManager();
+            ParticleManager = new ParticleManager(Map);
             Player = new Player();
         }
 

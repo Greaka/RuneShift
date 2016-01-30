@@ -11,11 +11,12 @@ namespace RuneShift
 {
     public class ParticleManager
     {
+
         List<ParticleSwarm> ParticleSwarms = new List<ParticleSwarm>();
 
-        public ParticleManager()
+        public ParticleManager(Map map)
         {
-            ParticleSwarms.Add(new BoundParticleSwarm(100, Vector2.Zero));
+            ParticleSwarms.Add(new BoundParticleSwarm(1000, Vector2.Zero));
         }
 
         public void Update()

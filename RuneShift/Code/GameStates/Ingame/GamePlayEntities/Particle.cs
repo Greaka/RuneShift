@@ -26,7 +26,7 @@ namespace RuneShift
         {
             float rotationDirection = -1*(Vector2.isToTheRight(Position, Direction, target) ? 1F : -1F);
 
-            Direction.rotate(Rand.Value(0.01F, 0.03F) * rotationDirection);
+            Direction.rotate(Rand.Value(0.002F, 0.09F) * rotationDirection);
             
             Position += Direction.normalized * Speed;
         }
