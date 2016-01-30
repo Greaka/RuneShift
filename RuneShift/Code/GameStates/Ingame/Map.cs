@@ -53,6 +53,16 @@ namespace RuneShift
             return result;
         }
 
+        public List<Rune> GetRunesInRadius(Vector2 position, float radius)
+        {
+            List<Rune> result = new List<Rune>();
+            foreach (StoneCircle stoneCircle in StoneCircles)
+            {
+                result.AddRange(stoneCircle.GetRunesInRadius(position, radius));
+            }
+            return result;
+        }
+
         public void Draw(RenderWindow win)
         {
             foreach (StoneCircle stoneCircle in StoneCircles)

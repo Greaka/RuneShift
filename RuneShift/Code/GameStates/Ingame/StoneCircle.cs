@@ -70,6 +70,21 @@ namespace RuneShift
             return result;
         }
 
+        public List<Rune> GetRunesInRadius(Vector2 position, float radius)
+        {
+            List<Rune> result = new List<Rune>();
+
+            float radiusSqr = radius * radius;
+            foreach (Rune rune in Runes)
+            {
+                if (Vector2.distanceSqr(rune.Position, position) < radiusSqr)
+                {
+                    result.Add(rune);
+                }
+            }
+            return result;
+        }
+
         public void Draw(RenderWindow win)
         {
             foreach (Rune rune in Runes)
