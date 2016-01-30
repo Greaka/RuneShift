@@ -29,3 +29,4 @@ C:\Users\Christoph\Dropbox\Uni\GameJam\rs\RuneShift\RuneShift\bin\Debug\Graphics
 C:\Users\Christoph\Dropbox\Uni\GameJam\rs\RuneShift\RuneShift\bin\Debug\libsndfile-1.dll
 C:\Users\Christoph\Dropbox\Uni\GameJam\rs\RuneShift\RuneShift\bin\Debug\openal32.dll
 C:\Users\Christoph\Dropbox\Uni\GameJam\rs\RuneShift\RuneShift\bin\Debug\Fonts\calibri.ttf
+C:\Users\Christoph\Dropbox\Uni\GameJam\rs\RuneShift\RuneShift\obj\Debug\RuneShift.csprojResolveAssemblyReference.cache
