@@ -9,11 +9,14 @@ namespace RuneShift
     {
         Map Map;
         bool resetView;
+        Player Player;
 
         public InGameState()
         {
             this.Map = new Map();
             resetView = true;
+
+            Player = new Player();
         }
 
         public GameState update()
@@ -33,6 +36,8 @@ namespace RuneShift
             }
 
             Map.Draw(win);
+
+            Player.Draw(win, view);
         }
 
         public void drawGUI(GUI gui)
