@@ -54,14 +54,18 @@ namespace RuneShift
 
             foreach (Rune adjacentRune in AdjacentRunes)
             {
-                VertexArray line = new VertexArray();
-                line.Append(new Vertex(Position));
-                for (float t = 0F; t < 1F; t += 0.01F)
+                //if (this.GetType() == adjacentRune.GetType())
                 {
-                    line.Append(new Vertex(Vector2.lerp(Position, adjacentRune.Position, t)));
+                    VertexArray line = new VertexArray();
+                    line.Append(new Vertex(Position));
+                    for (float t = 0F; t < 1F; t += 0.01F)
+                    {
+                        line.Append(new Vertex(Vector2.lerp(Position, adjacentRune.Position, t)));
+                    }
+                    line.Append(new Vertex(adjacentRune.Position));
+                    win.Draw(line);
+
                 }
-                line.Append(new Vertex(adjacentRune.Position));
-                win.Draw(line);
             }
         }
     }
