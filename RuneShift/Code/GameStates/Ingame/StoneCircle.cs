@@ -11,11 +11,14 @@ namespace RuneShift
         List<Rune> Runes = new List<Rune>();
         float Radius;
         float Rotation;
+        float RotationSpeed;
 
         public StoneCircle(float radius, int RuneCount)
         {
             this.Radius = radius;
             this.Rotation = 0F;
+
+            RotationSpeed = Rand.Value(0.005F, 0.02F);
 
             for (int i = 0; i < RuneCount; ++i)
             {
@@ -27,7 +30,7 @@ namespace RuneShift
 
         public void Update()
         {
-            Rotation += 0.01F;
+            Rotation += RotationSpeed;
             SetRunesAccordingToRotation();
         }
 
