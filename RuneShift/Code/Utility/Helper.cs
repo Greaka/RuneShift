@@ -43,15 +43,17 @@ class Helper
             return f;
     }
 
-    public static Vector2 ScreenToGameCoordinate(Vector2 ScreenCoordinate, View view, Window win)
+    public static Vector2 MousePositionToGameCoordinate(Window win, View view)
+    {
+        return ScreenToGameCoordinate(win.InternalGetMousePosition(), win, view);
+    }
+
+    public static Vector2 ScreenToGameCoordinate(Vector2 ScreenCoordinate, Window win, View view)
     {
         Vector2 coordinate = ScreenCoordinate;
 
         // normalize to windowSpace [0, 1]
         coordinate /= win.Size;
-
-        // invert y-coordinate (since window y-direction points downward)
-        coordinate.Y = 1F - coordinate.Y;
 
         // shift center [-0.5, 0.5]
         coordinate -= Vector2.One * 0.5F;

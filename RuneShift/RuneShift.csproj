@@ -65,7 +65,7 @@
     <Compile Include="Code\GameStates\Ingame\Runes\Rune.cs" />
     <Compile Include="Code\GameStates\Ingame\StoneCircle.cs" />
     <Compile Include="Code\GameStates\Ingame\Map.cs" />
-    <Compile Include="Code\GameStates\Ingame\Player.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Player.cs" />
     <Compile Include="Code\GameStates\Ingame\InGameState.cs" />
     <Compile Include="Code\GameStates\MainMenuState.cs" />
     <Compile Include="Code\GUI.cs" />

@@ -11,6 +11,7 @@ namespace RuneShift
         private Sprite bg;
         Map Map;
         bool resetView;
+        Player Player;
 
         public InGameState()
         {
@@ -19,6 +20,8 @@ namespace RuneShift
             bg.Scale = Vector2.One * 0.08F;
             this.Map = new Map();
             resetView = true;
+
+            Player = new Player();
         }
 
         public GameState update()
@@ -38,6 +41,8 @@ namespace RuneShift
             }
             win.Draw(bg);
             Map.Draw(win);
+
+            Player.Draw(win, view);
         }
 
         public void drawGUI(GUI gui)
