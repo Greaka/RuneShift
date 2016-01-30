@@ -12,10 +12,10 @@ namespace RuneShift
 
         public Map()
         {
-            StoneCircles.Add(new StoneCircle(10F, 3, RotationDirection.Clockwise));
-            StoneCircles.Add(new StoneCircle(20F, 6, RotationDirection.CounterClockwise));
-            StoneCircles.Add(new StoneCircle(30F, 7, RotationDirection.Clockwise));
-            StoneCircles.Add(new StoneCircle(40F, 9, RotationDirection.CounterClockwise));
+            StoneCircles.Add(new StoneCircle(10F, 3, RotationDirection.Clockwise, AssetManager.getTexture(AssetManager.TextureName.Circle0_Innermost)));
+            StoneCircles.Add(new StoneCircle(20F, 6, RotationDirection.CounterClockwise, AssetManager.getTexture(AssetManager.TextureName.Circle1)));
+            StoneCircles.Add(new StoneCircle(30F, 7, RotationDirection.Clockwise, AssetManager.getTexture(AssetManager.TextureName.Circle2)));
+            StoneCircles.Add(new StoneCircle(40F, 9, RotationDirection.CounterClockwise, AssetManager.getTexture(AssetManager.TextureName.Circle3)));
             for (int i = 0; i < StoneCircles.Count; ++i)
             {
                 StoneCircle nextInner = i - 1 < 0 ? null : StoneCircles[i - 1];

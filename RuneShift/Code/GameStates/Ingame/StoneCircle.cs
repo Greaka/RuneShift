@@ -8,6 +8,8 @@ namespace RuneShift
 {
     class StoneCircle
     {
+        Sprite Sprite;
+
         List<Rune> Runes = new List<Rune>();
         float Radius;
         float Rotation;
@@ -16,8 +18,12 @@ namespace RuneShift
         StoneCircle NextInnerCircle;
         StoneCircle NextOuterCircle;
 
-        public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection)
+        public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
         {
+            Sprite = new Sprite(texture);
+            Sprite.Origin = (Vector2)Sprite.Texture.Size / 2F;
+            Sprite.Scale = Vector2.One * 0.08F;
+
             this.Radius = radius;
             this.Rotation = 0F;
 
@@ -111,7 +117,6 @@ namespace RuneShift
 
         void SetRunesAccordingToRotation()
         {
-
             float stepSize = 2F * Helper.PI / (float)Runes.Count;
 
             for (int i = 0; i < Runes.Count; ++i)
@@ -166,6 +171,9 @@ namespace RuneShift
 
         public void Draw(RenderWindow win)
         {
+            Sprite.Rotation = -Rotation * Helper.RadianToDegree;
+            win.Draw(Sprite);
+
             foreach (Rune rune in Runes)
             {
                 rune.Draw(win);
