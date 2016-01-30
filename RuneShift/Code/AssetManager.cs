@@ -25,10 +25,14 @@ public class AssetManager
 
         textures.Add(TextureName.EnergyParticle, new Texture("Graphics/Particle.png"));
 
-        textures.Add(TextureName.RuneFire, new Texture("Graphics/rune1.png"));
-        textures.Add(TextureName.RuneWater, new Texture("Graphics/rune2.png"));
-        textures.Add(TextureName.RuneAir, new Texture("Graphics/rune3.png"));
-        textures.Add(TextureName.RuneEarth, new Texture("Graphics/rune4.png"));
+        textures.Add(TextureName.FireRune, new Texture("Graphics/rune3.png"));
+        textures.Add(TextureName.FireRuneGlow, new Texture("Graphics/rune3_fx.png"));
+        textures.Add(TextureName.WaterRune, new Texture("Graphics/rune1.png"));
+        textures.Add(TextureName.WaterRuneGlow, new Texture("Graphics/rune1_fx.png"));
+        textures.Add(TextureName.WindRune, new Texture("Graphics/rune2.png"));
+        textures.Add(TextureName.WindRuneGlow, new Texture("Graphics/rune2_fx.png"));
+        textures.Add(TextureName.EarthRune, new Texture("Graphics/rune5.png"));
+        textures.Add(TextureName.EarthRuneGlow, new Texture("Graphics/rune5_fx.png"));
     }
 
     public enum TextureName
@@ -41,11 +45,15 @@ public class AssetManager
         Circle3,
         
         EnergyParticle,
-        
-        RuneFire,
-        RuneWater,
-        RuneAir,
-        RuneEarth,
+
+        FireRune,
+        FireRuneGlow,
+        WaterRune,
+        WaterRuneGlow,
+        WindRune,
+        WindRuneGlow,
+        EarthRune,
+        EarthRuneGlow,
         
     }
 }

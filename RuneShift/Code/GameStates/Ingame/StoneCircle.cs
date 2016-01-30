@@ -13,25 +13,100 @@ namespace RuneShift
         float Rotation;
         float RotationSpeed;
 
-        public StoneCircle(float radius, int RuneCount)
+        StoneCircle NextInnerCircle;
+        StoneCircle NextOuterCircle;
+
+        public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection)
         {
             this.Radius = radius;
             this.Rotation = 0F;
 
-            RotationSpeed = Rand.Value(0.005F, 0.02F);
+            RotationSpeed = (rotationDirection == RotationDirection.Clockwise ? -1F : 1F) * Rand.Value(0.0005F, 0.001F);
 
             for (int i = 0; i < RuneCount; ++i)
             {
-                Runes.Add(new FireRune(Vector2.Zero));
+                Runes.Add(CreateRandomRune(Vector2.Zero));
             }
             SetRunesAccordingToRotation();
-
         }
 
-        public void Update()
+        public void SetNeighbourCircles(StoneCircle nextInnerCircle, StoneCircle nextOuterCircle)
+        {
+            NextInnerCircle = nextInnerCircle;
+            NextOuterCircle = nextOuterCircle;
+        }
+
+        Rune CreateRandomRune(Vector2 position)
+        {
+            float rand = Rand.Value();
+            float probabiltiyPerRuneKind = 1F / 4F;
+
+            if (rand < probabiltiyPerRuneKind)
+                return new FireRune(position);
+            else if (rand < probabiltiyPerRuneKind * 2F)
+                return new EarthRune(position);
+            else if (rand < probabiltiyPerRuneKind * 3F)
+                return new WaterRune(position);
+            else
+                return new WindRune(position);
+        }
+
+        public void UpdateRotation()
         {
             Rotation += RotationSpeed;
             SetRunesAccordingToRotation();
+        }
+
+        /// <summary>
+        /// Clears all Rune Adjacencies (recursevly) from this StoneCircle going outwards
+        /// </summary>
+        public void ClearRuneAdjacenciesRecursively()
+        {
+            for (int i = 0; i < Runes.Count; ++i)
+            {
+                Runes[i].AdjacentRunes.Clear();
+            }
+            if (NextOuterCircle != null)
+            {
+                NextOuterCircle.ClearRuneAdjacenciesRecursively();
+            }
+        }
+
+        /// <summary>
+        /// Create all Rune Adjacencies (recursevly) from this StoneCircle going outwards
+        /// </summary>
+        public void CreateRuneAdjacenciesRecursively()
+        {
+            for (int i = 0; i < Runes.Count; ++i)
+            {
+                // search for adjacent Runes within the same StoneCircle
+                for (int j = i; j < Runes.Count; ++j)
+                {
+                    if (Vector2.distance(Runes[i].Position, Runes[j].Position) < Rune.AdjacencyDistance)
+                    {
+                        CreateRuneAdjacency(Runes[i], Runes[j]);
+                    }
+                }
+                // search for adjacent Runes within the next Outer StoneCircle
+                if (NextOuterCircle != null)
+                {
+                    List<Rune> nextOuterAdjacentRunes = NextOuterCircle.GetRunesInRadius(Runes[i].Position, Rune.AdjacencyDistance);
+                    foreach (Rune rune in nextOuterAdjacentRunes)
+                    {
+                        CreateRuneAdjacency(Runes[i], rune);
+                    }
+                }
+            }
+            if (NextOuterCircle != null)
+            {
+                NextOuterCircle.CreateRuneAdjacenciesRecursively();
+            }
+        }
+
+        private void CreateRuneAdjacency(Rune r1, Rune r2)
+        {
+            r1.AdjacentRunes.Add(r2);
+            r2.AdjacentRunes.Add(r1);
         }
 
         void SetRunesAccordingToRotation()
@@ -44,7 +119,8 @@ namespace RuneShift
                 float t = i * stepSize + Rotation;
                 Vector2 pos = new Vector2(Math.Sin(t), Math.Cos(t)) * Radius;
 
-                Runes[i] = new FireRune(pos);
+                Runes[i].Position = pos;
+                Runes[i].Rotation = -t * Helper.RadianToDegree;
             }
         }
 

@@ -18,7 +18,7 @@ namespace RuneShift
 
         public Player(Vector2f position)
         {
-            this.sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.RuneEarth));
+            this.sprite = new Sprite(AssetManager.getTexture(AssetManager.TextureName.EarthRune));
             this.sprite.Scale = new Vector2(0.1F, 0.1F);
 
             this.position = position;

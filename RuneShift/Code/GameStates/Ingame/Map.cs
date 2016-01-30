@@ -12,18 +12,28 @@ namespace RuneShift
 
         public Map()
         {
-            StoneCircles.Add(new StoneCircle(10F, 5));
-            StoneCircles.Add(new StoneCircle(20F, 7));
-            StoneCircles.Add(new StoneCircle(30F, 10));
-            StoneCircles.Add(new StoneCircle(40F, 15));
+            StoneCircles.Add(new StoneCircle(10F, 3, RotationDirection.Clockwise));
+            StoneCircles.Add(new StoneCircle(20F, 6, RotationDirection.CounterClockwise));
+            StoneCircles.Add(new StoneCircle(30F, 7, RotationDirection.Clockwise));
+            StoneCircles.Add(new StoneCircle(40F, 9, RotationDirection.CounterClockwise));
+            for (int i = 0; i < StoneCircles.Count; ++i)
+            {
+                StoneCircle nextInner = i - 1 < 0 ? null : StoneCircles[i - 1];
+                StoneCircle nextOuter = i + 1 >= StoneCircles.Count ? null : StoneCircles[i + 1];
+                StoneCircles[i].SetNeighbourCircles(nextInner, nextOuter);
+            }
         }
 
         public void Update()
         {
             foreach(StoneCircle stoneCircle in StoneCircles)
             {
-                stoneCircle.Update();
+                stoneCircle.UpdateRotation();
             }
+            // recursively reset Adjacencies from inner to outer Circle
+            StoneCircles[0].ClearRuneAdjacenciesRecursively();
+            StoneCircles[0].CreateRuneAdjacenciesRecursively();
+
         }
 
         public Rune GetNearestRune(Vector2 position)

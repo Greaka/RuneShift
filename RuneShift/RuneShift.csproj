@@ -57,6 +57,10 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\Ingame\RotationDirection.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\WaterRune.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\WindRune.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\EarthRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\FireRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\Rune.cs" />
     <Compile Include="Code\GameStates\Ingame\StoneCircle.cs" />
