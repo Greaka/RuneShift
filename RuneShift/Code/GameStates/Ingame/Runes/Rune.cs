@@ -15,23 +15,27 @@ namespace RuneShift
         {
             this.Sprite = new Sprite(texture);
             this.Sprite.Scale = Vector2.One * 0.01F;
-            Sprite.Origin = (((Vector2)Sprite.Scale) * Sprite.Texture.Size) / 2F;
+            Sprite.Origin = ((Vector2)Sprite.Texture.Size) / 2F;
             this.Position = position;
         }
 
         public void Draw(RenderWindow win)
         {
-            if(Sprite == null)
-            {
-                RectangleShape debugGraphic = new RectangleShape(new Vector2(10F, 10F));
-                debugGraphic.Origin = debugGraphic.Size / 2F;
-
-                win.Draw(debugGraphic);
-            }
-            else
+            if(Sprite != null)
             {
                 win.Draw(Sprite);
             }
+
+            DebugDraw(win);
+        }
+
+        RectangleShape debugGrphic = new RectangleShape(Vector2.One);
+
+        void DebugDraw(RenderWindow win)
+        {
+            debugGrphic.FillColor = Color.Red;
+            debugGrphic.Position = Position - ((Vector2)debugGrphic.Size / 2F);
+            win.Draw(debugGrphic);
         }
     }
 }
