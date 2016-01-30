@@ -9,8 +9,11 @@ namespace RuneShift
     class InGameState : IGameState
     {
         private Sprite bg;
+        
         Map Map;
         bool resetView;
+
+        ParticleManager ParticleManager;
         Player Player;
 
         public InGameState()
@@ -18,15 +21,18 @@ namespace RuneShift
             bg = new Sprite(AssetManager.getTexture(AssetManager.TextureName.InGameBackground));
             bg.Origin = (Vector2) bg.Texture.Size / 2F;
             bg.Scale = Vector2.One * 0.08F;
+
             this.Map = new Map();
             resetView = true;
 
+            ParticleManager = new ParticleManager();
             Player = new Player();
         }
 
         public GameState update()
         {
             Map.Update();
+            ParticleManager.Update();
 
             return GameState.InGame;
         }
@@ -41,6 +47,7 @@ namespace RuneShift
             }
             win.Draw(bg);
             Map.Draw(win);
+            ParticleManager.Draw(win);
 
             Player.Draw(win, view);
         }

@@ -57,6 +57,10 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Particle.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\BoundParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleManager.cs" />
     <Compile Include="Code\GameStates\Ingame\RotationDirection.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\WaterRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\WindRune.cs" />

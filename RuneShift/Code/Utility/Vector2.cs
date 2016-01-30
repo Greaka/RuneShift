@@ -99,16 +99,18 @@ public struct Vector2
     }
 
     /// <summary>returs a vector rotated around the given angle</summary>
-    public Vector2 rotate(float angle)
+    public Vector2 rotate(float radian)
     {
-        Vector2 ret = new Vector2();
-        float cosA = (float)System.Math.Cos(angle);
-        float sinA = (float)System.Math.Sin(angle);
+        float cosA = (float)System.Math.Cos(radian);
+        float sinA = (float)System.Math.Sin(radian);
 
-        ret.X = X * cosA - Y * sinA;
-        ret.Y = Y * cosA + X * sinA;
+        float tmpX = X * cosA - Y * sinA;
+        float tmpY = Y * cosA + X * sinA;
 
-        return ret;
+        X = tmpX;
+        Y = tmpY;
+
+        return this;
     }
 
     public Vector2 right { get { return new Vector2(Y, -X); } }
@@ -151,6 +153,17 @@ public struct Vector2
     public static float dot(Vector2 v1, Vector2 v2)
     {
         return v1.X * v2.X + v1.Y * v2.Y;
+    }
+
+    public static bool isInFront(Vector2 viewersPosition, Vector2 viewersDirection, Vector2 positionInQuestion)
+    {
+        viewersDirection.normalize();
+        return dot(viewersDirection, positionInQuestion - viewersPosition) > 0F;
+    }
+
+    public static bool isToTheRight(Vector2 viewersPosition, Vector2 viewersDirection, Vector2 positionInQuestion)
+    {
+        return isInFront(viewersPosition, viewersDirection.right, positionInQuestion);
     }
 
     //------------------------------------------//

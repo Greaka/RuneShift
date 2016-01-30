@@ -52,7 +52,7 @@ namespace RuneShift
         {
             debugGrphic.FillColor = Color.Red;
             debugGrphic.Position = Position - ((Vector2)debugGrphic.Size / 2F);
-            //win.Draw(debugGrphic);
+            win.Draw(debugGrphic);
 
             foreach (Rune adjacentRune in AdjacentRunes)
             {
