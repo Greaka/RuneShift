@@ -72,7 +72,7 @@ namespace RuneShift
 
                 // update GameTime
                 gameTime.Update();
-                int waitTime = (int)(16.667f - gameTime.EllapsedTime.Milliseconds);
+                int waitTime = (int)((1F / 70F) * 1000F - gameTime.EllapsedTime.Milliseconds);
                 System.Threading.Thread.Sleep(waitTime >= 0 ? waitTime : 0);
             }
         }
