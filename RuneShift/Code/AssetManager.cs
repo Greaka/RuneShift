@@ -18,10 +18,10 @@ public class AssetManager
     {
         textures.Add(TextureName.InGameBackground, new Texture("Graphics/background.png"));
 
-        textures.Add(TextureName.Circle0_Innermost, new Texture("Graphics/circle0.png"));
-        textures.Add(TextureName.Circle1, new Texture("Graphics/circle1.png"));
-        textures.Add(TextureName.Circle2, new Texture("Graphics/circle2.png"));
-        textures.Add(TextureName.Circle3, new Texture("Graphics/circle3.png"));
+        textures.Add(TextureName.Circle0_Innermost, new Texture("Graphics/circle_0.png"));
+        textures.Add(TextureName.Circle1, new Texture("Graphics/circle_1.png"));
+        textures.Add(TextureName.Circle2, new Texture("Graphics/circle_2.png"));
+        textures.Add(TextureName.Circle3, new Texture("Graphics/circle_3.png"));
 
         textures.Add(TextureName.EnergyParticle, new Texture("Graphics/Particle.png"));
 
