@@ -12,7 +12,7 @@ namespace RuneShift
     public class BoundParticleSwarm : ParticleSwarm
     {
         public Vector2 Position { get; protected set; }
-        protected Color Color;
+        public Color Color;
 
         public BoundParticleSwarm(int particleCount, Vector2 position, Color color)
             : base(particleCount, position)
@@ -25,7 +25,8 @@ namespace RuneShift
         {
             foreach(Particle particle in Particles)
             {
-                particle.Update(Position, Color);
+                particle.Update(Position);
+                particle.Color = Helper.LerpClamp(particle.Color, Color, 0.3F);
             }
         }
     }
