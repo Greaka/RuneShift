@@ -16,8 +16,8 @@ namespace RuneShift.Code
 
         static bool running = true;
 
-        static GameState currentGameState = GameState.InGame;
-        static GameState prevGameState = GameState.InGame;
+        static GameState currentGameState = GameState.MainMenu;
+        static GameState prevGameState = GameState.MainMenu;
         static IGameState state;
 
         static RenderWindow win;
@@ -29,7 +29,7 @@ namespace RuneShift.Code
         static void Main(string[] args)
         {
             // initialize window and view
-            win = new RenderWindow(new VideoMode(1300, 900), "Hadoken!!!");
+            win = new RenderWindow(new VideoMode(1000, 700), "Hadoken!!!");
             view = new View();
             resetView();
             gui = new GUI(win, view);

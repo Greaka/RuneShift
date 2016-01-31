@@ -29,7 +29,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
                 return;
             }
 
-            Position -= Position.normalized * 0.015F;
+            Position -= Position.normalized * 0.005F;
 
             if (Position.lengthSqr < DamageRadiusSqr)
             {

@@ -98,6 +98,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Graphics\screen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="csfml-audio-2.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

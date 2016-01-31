@@ -18,7 +18,10 @@ namespace RuneShift.Code
 
         static void LoadTextures()
         {
+            textures.Add(TextureName.MainMenuBackground, new Texture("Graphics/screen.png"));
+
             textures.Add(TextureName.InGameBackground, new Texture("Graphics/background.png"));
+
 
             textures.Add(TextureName.Circle0_Innermost, new Texture("Graphics/circle_0.png"));
             textures.Add(TextureName.Circle1, new Texture("Graphics/circle_1.png"));
@@ -45,6 +48,8 @@ namespace RuneShift.Code
 
         public enum TextureName
         {
+            MainMenuBackground,
+
             InGameBackground,
 
             Circle0_Innermost,
