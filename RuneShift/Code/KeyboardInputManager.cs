@@ -1,7 +1,7 @@
 ﻿using SFML.Window;
 using System.Collections.Generic;
 
-public class KeyboardInputManager
+class KeyboardInputManager
 {
     static bool isInitialized = false;
 

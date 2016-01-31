@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-public class GameTime
+class GameTime
 {
     private Stopwatch watch;
     /// <summary>

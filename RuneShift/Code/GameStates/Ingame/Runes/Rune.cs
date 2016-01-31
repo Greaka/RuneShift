@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace RuneShift
 {
-    public abstract class Rune
+    abstract class Rune
     {
         public static float AdjacencyDistance = 15F;
 

@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public abstract class ParticleSwarm
+    abstract class ParticleSwarm
     {
         protected Sprite ParticleSprite;
 
@@ -24,7 +24,7 @@ namespace RuneShift
             ParticleSprite.Origin = ((Vector2)ParticleSprite.Texture.Size) / 2F;
             ParticleSprite.Scale = Vector2.One * 0.02F;
 
-            ParticleSpeed = 0.09F;
+            ParticleSpeed = 0.12F;
 
             for (int i = 0; i < particleCount; ++i)
             {

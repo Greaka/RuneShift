@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class MovingParticleSwarm : ParticleSwarm
+    class MovingParticleSwarm : ParticleSwarm
     {
         protected BoundParticleSwarm TargetSwarm;
         private float t;

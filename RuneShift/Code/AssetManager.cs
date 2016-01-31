@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SFML.Graphics;
 
-public class AssetManager
+class AssetManager
 {
     static Dictionary<TextureName, Texture> textures = new Dictionary<TextureName, Texture>();
 

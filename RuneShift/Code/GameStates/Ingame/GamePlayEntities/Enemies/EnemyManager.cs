@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class EnemyManager
+    class EnemyManager
     {
         Player Player;
 

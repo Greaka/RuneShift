@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class ParticleManager
+    class ParticleManager
     {
         List<ParticleSwarm> ParticleSwarms = new List<ParticleSwarm>();
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace RuneShift
 {
-    public class Map
+    class Map
     {
         List<StoneCircle> StoneCircles = new List<StoneCircle>();
 

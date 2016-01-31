@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class Knight : Enemy
+    class Knight : Enemy
     {
         float DamageRadiusSqr = 2F * 2F;
         float Strength = 2F;
