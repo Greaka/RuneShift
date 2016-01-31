@@ -65,13 +65,12 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
                     Vector2 releasePosition = Program.MousePositionToGameCoordinate();
                     float distanceToSwarm;
                     BoundParticleSwarm targetSwarm = ParticleManager.GetNearestBoundSwarm(releasePosition, out distanceToSwarm);
-                    if (targetSwarm != null && distanceToSwarm < SwarmSelectRadius)
+                    if (distanceToSwarm > SwarmSelectRadius)
                     {
-                        ParticleManager.ParticleSwarms.Add(Balken.Release(targetSwarm));
-                        ParticleManager.ParticleSwarms.Remove(Balken);
+                        targetSwarm = null;
                     }
-                    else
-                        Balken.Release();
+                    ParticleManager.ParticleSwarms.Add(Balken.Release(targetSwarm));
+                    ParticleManager.ParticleSwarms.Remove(Balken);
                     SelectedSwarm = null;
                     Balken = null;
                     NumSelectedParticles = 0F;
