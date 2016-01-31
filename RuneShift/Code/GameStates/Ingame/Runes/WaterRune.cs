@@ -11,7 +11,8 @@ namespace RuneShift
             : base(
             position, 
             AssetManager.getTexture(AssetManager.TextureName.WaterRune), 
-            AssetManager.getTexture(AssetManager.TextureName.WaterRuneGlow))
+            AssetManager.getTexture(AssetManager.TextureName.WaterRuneGlow),
+            AssetManager.getTexture(AssetManager.TextureName.WaterRuneDot))
         {
 
         }

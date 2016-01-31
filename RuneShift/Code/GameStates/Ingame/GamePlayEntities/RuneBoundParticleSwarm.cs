@@ -31,6 +31,7 @@ namespace RuneShift
             : base(particleCount, rune.Position, RuneColor(rune.GetType()))
         {
             this.Rune = rune;
+            rune.particleSwarm = this;
         }
 
         public override void Update()

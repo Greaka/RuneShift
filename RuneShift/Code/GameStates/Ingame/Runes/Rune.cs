@@ -13,13 +13,16 @@ namespace RuneShift
         Sprite Sprite;
         Texture StoneTexture;
         Texture GlowTexture;
+        Texture DotTexture;
 
         public Vector2 Position { get { return Sprite.Position; } set { Sprite.Position = value; } }
         public float Rotation { get { return Sprite.Rotation; } set { Sprite.Rotation = value; } }
 
         public List<Rune> AdjacentRunes = new List<Rune>();
+
+        public RuneBoundParticleSwarm particleSwarm;
         
-        public Rune(Vector2 position, Texture stoneTexture, Texture glowTexture)
+        public Rune(Vector2 position, Texture stoneTexture, Texture glowTexture, Texture dotTexture)
         {
             this.Sprite = new Sprite(stoneTexture);
             this.Sprite.Scale = Vector2.One * 0.008F;
@@ -27,6 +30,7 @@ namespace RuneShift
 
             StoneTexture = stoneTexture;
             GlowTexture = glowTexture;
+            DotTexture = dotTexture;
             
             this.Position = position;
         }
@@ -35,24 +39,26 @@ namespace RuneShift
         {
             if(Sprite != null)
             {
-                /*
+                Sprite.Color = Color.White;
                 Sprite.Texture = StoneTexture;
                 win.Draw(Sprite);
-                */
-                Sprite.Texture = GlowTexture;
+                var opacity = particleSwarm.Count >= 200 ? (byte) 100 :
+                (byte) (particleSwarm.Count / 2);
+                Sprite.Color = new Color(255, 255, 255, opacity);
+                Sprite.Texture = opacity == 100 ? DotTexture : GlowTexture;
                 win.Draw(Sprite);
             }
 
             DebugDraw(win);
         }
 
-        RectangleShape debugGrphic = new RectangleShape(Vector2.One);
+        RectangleShape debugGraphic = new RectangleShape(Vector2.One);
 
         void DebugDraw(RenderWindow win)
         {
-            debugGrphic.FillColor = Color.Red;
-            debugGrphic.Position = Position - ((Vector2)debugGrphic.Size / 2F);
-            win.Draw(debugGrphic);
+            debugGraphic.FillColor = Color.Red;
+            debugGraphic.Position = Position - ((Vector2)debugGraphic.Size / 2F);
+            win.Draw(debugGraphic);
 
             foreach (Rune adjacentRune in AdjacentRunes)
             {
