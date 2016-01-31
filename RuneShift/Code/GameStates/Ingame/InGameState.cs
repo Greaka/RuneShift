@@ -15,6 +15,7 @@ namespace RuneShift.Code.GameStates.Ingame
         EnemyManager EnemyManager;
         ParticleManager ParticleManager;
         Player Player;
+        AlignmentManager AlignmentManager;
 
         public InGameState()
         {
@@ -28,6 +29,7 @@ namespace RuneShift.Code.GameStates.Ingame
             ParticleManager = new ParticleManager(Map);
             Player = new Player(ParticleManager, Map);
             EnemyManager = new EnemyManager(Player);
+            AlignmentManager = new AlignmentManager(Player, Map);
         }
 
         public GameState update()
@@ -35,6 +37,7 @@ namespace RuneShift.Code.GameStates.Ingame
             Map.Update();
             EnemyManager.Update();
             ParticleManager.Update();
+            AlignmentManager.Update();
             Player.Update();
 
             return GameState.InGame;
@@ -51,6 +54,7 @@ namespace RuneShift.Code.GameStates.Ingame
             win.Draw(bg);
 
             Map.Draw(win);
+            AlignmentManager.Draw(win);
             ParticleManager.Draw(win);
             EnemyManager.Draw(win);
             Player.Draw(win);

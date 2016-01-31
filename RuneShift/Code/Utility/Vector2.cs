@@ -157,6 +157,14 @@ namespace RuneShift.Code.Utility
             return v1.X * v2.X + v1.Y * v2.Y;
         }
 
+        /// <summary>returns the internal angle (radian) between the 2 Vectors</summary>
+        public static float internalAngle(Vector2 v1, Vector2 v2)
+        {
+            v1.normalize();
+            v2.normalize();
+            return (float)Math.Acos(dot(v1, v2));
+        }
+
         public static bool isInFront(Vector2 viewersPosition, Vector2 viewersDirection, Vector2 positionInQuestion)
         {
             viewersDirection.normalize();

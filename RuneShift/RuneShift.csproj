@@ -57,6 +57,8 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\Ingame\Alignments\Alignment.cs" />
+    <Compile Include="Code\GameStates\Ingame\Alignments\AlignmentManager.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Enemies\Knight.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Enemies\EnemyManager.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Swarms\MovingParticleSwarm.cs" />
@@ -198,6 +200,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
