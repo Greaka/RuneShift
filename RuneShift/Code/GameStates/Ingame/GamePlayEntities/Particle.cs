@@ -33,7 +33,7 @@ namespace RuneShift
             
             Position += Direction.normalized * Speed;
 
-            Color = Helper.LerpClamp(Color, targetColor, 0.01F);
+            Color = Helper.Lerp(Color, targetColor, 0.01F);
         }
     }
 }
