@@ -12,18 +12,20 @@ namespace RuneShift
     public class BoundParticleSwarm : ParticleSwarm
     {
         protected Vector2 Position;
+        protected Color Color;
 
-        public BoundParticleSwarm(int particleCount, Vector2 position)
+        public BoundParticleSwarm(int particleCount, Vector2 position, Color color)
             : base(particleCount, position)
         {
             Position = position;
+            Color = color;
         }
 
         public override void Update()
         {
             foreach(Particle particle in Particles)
             {
-                particle.Update(Position);
+                particle.Update(Position, Color);
             }
         }
     }
