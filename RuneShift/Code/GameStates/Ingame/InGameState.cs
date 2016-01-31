@@ -26,13 +26,14 @@ namespace RuneShift
             resetView = true;
 
             ParticleManager = new ParticleManager(Map);
-            Player = new Player(ParticleManager);
+            Player = new Player(ParticleManager, Map);
         }
 
         public GameState update()
         {
             Map.Update();
             ParticleManager.Update();
+            Player.Update();
 
             return GameState.InGame;
         }

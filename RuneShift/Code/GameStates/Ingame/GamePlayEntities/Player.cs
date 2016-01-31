@@ -12,21 +12,29 @@ namespace RuneShift
     public class Player
     {
         ParticleManager ParticleManager;
+        Map Map;
 
-        ParticleSwarm selectedSwarm;
+        BoundParticleSwarm SelectedSwarm;
+        
+        float NumSelectedParticles;
+        float SelectingSpeed;
+        float SwarmSelectRadius;
 
-        float swarmSelectRadius;
-
-        public Player(ParticleManager particleManager)
+        public Player(ParticleManager particleManager, Map map)
         {
             this.ParticleManager = particleManager;
-            this.selectedSwarm = null;
-            this.swarmSelectRadius = 5F;
+            this.Map = map;
+
+            this.SelectedSwarm = null;
+
+            this.NumSelectedParticles = 0F;
+            this.SelectingSpeed = 0.3F;
+            this.SwarmSelectRadius = 5F;
         }
 
-        public void update()
+        public void Update()
         {
-            if (selectedSwarm == null)
+            if (SelectedSwarm == null)
             {
                 if (Mouse.IsButtonPressed(Mouse.Button.Left))
                 {
@@ -34,9 +42,9 @@ namespace RuneShift
                     Vector2 clickPosition = Program.MousePositionToGameCoordinate();
                     float distanceToSwarm;
                     BoundParticleSwarm nearestSwarm = ParticleManager.GetNearestBoundSwarm(clickPosition, out distanceToSwarm);
-                    if(nearestSwarm != null && distanceToSwarm < swarmSelectRadius)
+                    if(nearestSwarm != null && distanceToSwarm < SwarmSelectRadius)
                     {
-                        selectedSwarm = nearestSwarm;
+                        SelectedSwarm = nearestSwarm;
                     }
                 }
             }
@@ -44,25 +52,49 @@ namespace RuneShift
             {
                 if (Mouse.IsButtonPressed(Mouse.Button.Left))
                 {
-
+                    NumSelectedParticles += SelectingSpeed;
+                    if (NumSelectedParticles > SelectedSwarm.Count)
+                        NumSelectedParticles = SelectedSwarm.Count;
+                }
+                else
+                {
+                    Vector2 releasePosition = Program.MousePositionToGameCoordinate();
+                    float distanceToSwarm;
+                    BoundParticleSwarm targetSwarm = ParticleManager.GetNearestBoundSwarm(releasePosition, out distanceToSwarm);
+                    if (targetSwarm != null && distanceToSwarm < SwarmSelectRadius)
+                    {
+                        ParticleManager.TransferParticles(SelectedSwarm, targetSwarm, (int)NumSelectedParticles);
+                    }
+                    SelectedSwarm = null;
+                    NumSelectedParticles = 0F;
                 }
             }
         }
 
         public void Draw(RenderWindow win, View view)
         {
-            if (Mouse.IsButtonPressed(Mouse.Button.Left))
+            if (SelectedSwarm != null)
             {
-                DebugDraw(win, view);
+                RectangleShape r = new RectangleShape(Vector2.One);
+                r.Origin = (Vector2)r.Size / 2F;
+                r.Position = SelectedSwarm.Position;
+                r.FillColor = Color.Red;
+                r.Scale = Vector2.One * NumSelectedParticles;
+                win.Draw(r);
             }
+            
+            DebugDraw(win, view);
         }
 
         private static void DebugDraw(RenderWindow win, View view)
         {
-            RectangleShape r = new RectangleShape(Vector2.One);
-            r.Origin = (Vector2)r.Size / 2F;
-            r.Position = Program.MousePositionToGameCoordinate();
-            win.Draw(r);
+            if (Mouse.IsButtonPressed(Mouse.Button.Left))
+            {
+                RectangleShape r = new RectangleShape(Vector2.One);
+                r.Origin = (Vector2)r.Size / 2F;
+                r.Position = Program.MousePositionToGameCoordinate();
+                win.Draw(r);
+            }
         }
     }
 }

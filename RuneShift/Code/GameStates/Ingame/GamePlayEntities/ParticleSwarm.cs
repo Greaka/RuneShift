@@ -46,7 +46,7 @@ namespace RuneShift
 
         public List<Particle> RemoveRandomParticles(int count)
         {
-            if (count < Count)
+            if (count > Count)
                 throw new Exception("Wanted to remove " + count + " Particles, but Swarm only contains " + Count);
 
             List<Particle> result = Particles.GetRange(Particles.Count - count - 1, count);

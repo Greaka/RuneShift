@@ -54,6 +54,12 @@ namespace RuneShift
             return nearestSwarm;
         }
 
+        public void TransferParticles(BoundParticleSwarm from, BoundParticleSwarm to, int num)
+        {
+            List<Particle> transferParticles = from.RemoveRandomParticles(num);
+            to.AddParticles(transferParticles);
+        }
+
         public void Draw(RenderWindow win)
         {
             foreach (ParticleSwarm particleSwarm in ParticleSwarms)
