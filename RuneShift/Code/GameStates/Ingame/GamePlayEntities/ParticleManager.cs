@@ -62,7 +62,9 @@ namespace RuneShift
         public void TransferParticles(BoundParticleSwarm from, BoundParticleSwarm to, int num)
         {
             List<Particle> transferParticles = from.RemoveRandomParticles(num);
-            to.AddParticles(transferParticles);
+            var transitioner = new MovingParticleSwarm(0, from.Position, to);
+            ParticleSwarms.Add(transitioner);
+            transitioner.AddParticles(transferParticles);
         }
 
         public void Draw(RenderWindow win)
