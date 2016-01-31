@@ -8,12 +8,15 @@ using SFML.Graphics;
 using SFML.Window;
 using RuneShift.Code.GameStates.Ingame.Runes;
 using RuneShift.Code.Utility;
+using RuneShift.Code.GameStates.Ingame;
+using RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms;
 
 namespace RuneShift
 {
     class Alignment
     {
         public List<Rune> Runes;
+        public static HashSet<Element> ActiveElements = new HashSet<Element>();
 
         public Alignment(ICollection<Rune> runes)
         {
@@ -39,6 +42,35 @@ namespace RuneShift
             return matchingRuneCount == Runes.Count;
         }
 
+        public void UpdateActiveElements()
+        {
+            Dictionary<Element, int> elementParticleCount = new Dictionary<Element, int>(4);
+            Dictionary<Element, int> elementCount = new Dictionary<Element, int>(4);
+
+            foreach (Rune r in Runes)
+            {
+                if (!elementParticleCount.ContainsKey(r.Element))
+                {
+                    elementParticleCount[r.Element] = 0;
+                    elementCount[r.Element] = 0;
+                }
+                elementParticleCount[r.Element] += r.particleSwarm.Count;
+                elementCount[r.Element]++;
+            }
+
+            fillColor = Color.White;
+            foreach (Element ele in elementParticleCount.Keys)
+            {
+                if (elementCount[ele] >= 3 && elementParticleCount[ele] > 300)
+                {
+                    Alignment.ActiveElements.Add(ele);
+                    fillColor = RuneBoundParticleSwarm.RuneColor(ele);
+                }
+            }
+        }
+
+        Color fillColor;
+
         public void Draw(RenderWindow win)
         {
             for (int i = 0; i < Runes.Count; ++i)
@@ -47,8 +79,10 @@ namespace RuneShift
                 {
                     DrawLine(win, Runes[i].Position, Runes[j].Position);
                 }
+                RectangleShape r = new RectangleShape(Vector2.One);
+                r.Position = Runes[i].Position;
+                win.Draw(r);
             }
-            
         }
 
         public void DrawLine(RenderWindow win, Vector2 from, Vector2 to)

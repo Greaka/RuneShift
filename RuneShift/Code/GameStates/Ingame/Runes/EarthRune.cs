@@ -10,7 +10,7 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
                   AssetManager.getTexture(AssetManager.TextureName.EarthRuneGlow),
                   AssetManager.getTexture(AssetManager.TextureName.EarthRuneDot))
         {
-
+            Element = Element.Earth;
         }
     }
 }

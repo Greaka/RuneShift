@@ -58,6 +58,12 @@ namespace RuneShift
                     Alignments.Add(alignment);
                 }
             }
+            // activate Elements
+            Alignment.ActiveElements.Clear();
+            foreach (Alignment alignment in Alignments)
+            {
+                alignment.UpdateActiveElements();
+            }
         }
 
         public void Draw(RenderWindow win)

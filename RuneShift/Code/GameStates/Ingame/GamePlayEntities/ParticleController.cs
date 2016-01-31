@@ -25,7 +25,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
             this.SelectedSwarm = null;
 
             this.NumSelectedParticles = 0F;
-            this.SelectingSpeed = 0.8F;
+            this.SelectingSpeed = 1.3F;
             this.SwarmSelectRadius = 5F;
         }
 

@@ -27,6 +27,11 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
         public void Draw(RenderWindow win)
         {
             win.Draw(Sprite);
+
+            RectangleShape r = new RectangleShape(new Vector2(Life, 0.5F));
+            r.Position = Position + Vector2.Up * 4F + Vector2.Left * r.Size.X / 2F;
+            r.FillColor = Color.Red;
+            win.Draw(r);
         }
     }
 }

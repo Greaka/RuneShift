@@ -10,7 +10,7 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
                   AssetManager.getTexture(AssetManager.TextureName.FireRuneGlow),
                   AssetManager.getTexture(AssetManager.TextureName.FireRuneDot))
         {
-
+            Element = Element.Fire;
         }
     }
 }

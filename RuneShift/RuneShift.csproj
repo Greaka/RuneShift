@@ -76,6 +76,7 @@
     <Compile Include="Code\GameStates\Ingame\Runes\EarthRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\FireRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\Rune.cs" />
+    <Compile Include="Code\GameStates\Ingame\Element.cs" />
     <Compile Include="Code\GameStates\Ingame\StoneCircle.cs" />
     <Compile Include="Code\GameStates\Ingame\Map.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Player.cs" />

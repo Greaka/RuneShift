@@ -10,7 +10,7 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
                   AssetManager.getTexture(AssetManager.TextureName.WindRuneGlow),
                   AssetManager.getTexture(AssetManager.TextureName.WindRuneDot))
         {
-
+            Element = Element.Wind;
         }
     }
 }

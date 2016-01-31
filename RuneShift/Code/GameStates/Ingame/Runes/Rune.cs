@@ -19,6 +19,8 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
 
         public List<Rune> AdjacentRunes = new List<Rune>();
 
+        public Element Element { get; protected set; }
+
         public RuneBoundParticleSwarm particleSwarm;
         
         public Rune(Vector2 position, Texture stoneTexture, Texture glowTexture, Texture dotTexture)

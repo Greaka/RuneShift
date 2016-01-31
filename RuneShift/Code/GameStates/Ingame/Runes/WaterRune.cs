@@ -11,7 +11,7 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
             AssetManager.getTexture(AssetManager.TextureName.WaterRuneGlow),
             AssetManager.getTexture(AssetManager.TextureName.WaterRuneDot))
         {
-
+            Element = Element.Water;
         }
     }
 }

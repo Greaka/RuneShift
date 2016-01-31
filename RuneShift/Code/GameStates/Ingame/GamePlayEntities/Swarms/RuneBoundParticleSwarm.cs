@@ -8,7 +8,24 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
     {
         private Rune Rune;
 
-        private static Color RuneColor(Type Instance)
+        public static Color RuneColor(Element ele)
+        {
+            switch (ele)
+            {
+                case Element.Earth:
+                    return RuneColor(typeof(EarthRune));
+                case Element.Fire:
+                    return RuneColor(typeof(FireRune));
+                case Element.Wind:
+                    return RuneColor(typeof(WindRune));
+                case Element.Water:
+                    return RuneColor(typeof(WaterRune));
+                default:
+                    return Color.White;
+            }
+        }
+
+        public static Color RuneColor(Type Instance)
         {
             if (Instance == typeof (FireRune))
                 return new Color(236, 0, 0);
