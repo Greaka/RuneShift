@@ -11,7 +11,7 @@ namespace RuneShift
 {
     public class BoundParticleSwarm : ParticleSwarm
     {
-        protected Vector2 Position;
+        public Vector2 Position { get; protected set; }
 
         public BoundParticleSwarm(int particleCount, Vector2 position)
             : base(particleCount, position)

@@ -26,7 +26,7 @@ namespace RuneShift
             resetView = true;
 
             ParticleManager = new ParticleManager(Map);
-            Player = new Player();
+            Player = new Player(ParticleManager);
         }
 
         public GameState update()

@@ -11,13 +11,42 @@ namespace RuneShift
 {
     public class Player
     {
+        ParticleManager ParticleManager;
 
-        public Player()
+        ParticleSwarm selectedSwarm;
+
+        float swarmSelectRadius;
+
+        public Player(ParticleManager particleManager)
         {
+            this.ParticleManager = particleManager;
+            this.selectedSwarm = null;
+            this.swarmSelectRadius = 5F;
         }
 
         public void update()
         {
+            if (selectedSwarm == null)
+            {
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    // select a swarm
+                    Vector2 clickPosition = Program.MousePositionToGameCoordinate();
+                    float distanceToSwarm;
+                    BoundParticleSwarm nearestSwarm = ParticleManager.GetNearestBoundSwarm(clickPosition, out distanceToSwarm);
+                    if(nearestSwarm != null && distanceToSwarm < swarmSelectRadius)
+                    {
+                        selectedSwarm = nearestSwarm;
+                    }
+                }
+            }
+            else
+            {
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+
+                }
+            }
         }
 
         public void Draw(RenderWindow win, View view)
@@ -32,7 +61,7 @@ namespace RuneShift
         {
             RectangleShape r = new RectangleShape(Vector2.One);
             r.Origin = (Vector2)r.Size / 2F;
-            r.Position = Helper.ScreenToGameCoordinate(win.InternalGetMousePosition(), win, view);
+            r.Position = Program.MousePositionToGameCoordinate();
             win.Draw(r);
         }
     }

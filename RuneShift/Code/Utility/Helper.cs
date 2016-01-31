@@ -42,28 +42,4 @@ class Helper
         else
             return f;
     }
-
-    public static Vector2 MousePositionToGameCoordinate(Window win, View view)
-    {
-        return ScreenToGameCoordinate(win.InternalGetMousePosition(), win, view);
-    }
-
-    public static Vector2 ScreenToGameCoordinate(Vector2 ScreenCoordinate, Window win, View view)
-    {
-        Vector2 coordinate = ScreenCoordinate;
-
-        // normalize to windowSpace [0, 1]
-        coordinate /= win.Size;
-
-        // shift center [-0.5, 0.5]
-        coordinate -= Vector2.One * 0.5F;
-
-        // shift to view-center
-        coordinate -= (Vector2)view.Center;
-
-        // scale according to view
-        coordinate *= view.Size;
-
-        return coordinate;
-    }
 }

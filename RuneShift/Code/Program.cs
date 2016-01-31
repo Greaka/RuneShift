@@ -110,5 +110,29 @@ namespace RuneShift
             view.Center = new Vector2(win.Size.X / 2F, win.Size.Y / 2F);
             view.Size = new Vector2(win.Size.X, win.Size.Y);
         }
+
+        public static Vector2 MousePositionToGameCoordinate()
+        {
+            return ScreenToGameCoordinate(win.InternalGetMousePosition());
+        }
+
+        public static Vector2 ScreenToGameCoordinate(Vector2 ScreenCoordinate)
+        {
+            Vector2 coordinate = ScreenCoordinate;
+
+            // normalize to windowSpace [0, 1]
+            coordinate /= win.Size;
+
+            // shift center [-0.5, 0.5]
+            coordinate -= Vector2.One * 0.5F;
+
+            // shift to view-center
+            coordinate -= (Vector2)view.Center;
+
+            // scale according to view
+            coordinate *= view.Size;
+
+            return coordinate;
+        }
     }
 }
