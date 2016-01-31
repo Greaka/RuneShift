@@ -1,21 +1,16 @@
-﻿using System;
-using SFML;
-using SFML.Graphics;
-using SFML.Window;
+﻿using RuneShift.Code.Utility;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.Runes
 {
     class FireRune : Rune
     {
         public FireRune(Vector2 position)
-            : base(position, AssetManager.getTexture(AssetManager.TextureName.RuneFire))
+            : base(position,
+                  AssetManager.getTexture(AssetManager.TextureName.FireRune),
+                  AssetManager.getTexture(AssetManager.TextureName.FireRuneGlow),
+                  AssetManager.getTexture(AssetManager.TextureName.FireRuneDot))
         {
 
-        }
-
-        public void Draw(RenderWindow win)
-        {
-            base.Draw(win);
         }
     }
 }

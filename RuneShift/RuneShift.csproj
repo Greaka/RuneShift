@@ -57,11 +57,28 @@
     <Compile Include="Code\AssetManager.cs" />
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
+    <Compile Include="Code\GameStates\Ingame\Alignments\Alignment.cs" />
+    <Compile Include="Code\GameStates\Ingame\Alignments\AlignmentManager.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Enemies\Knight.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Enemies\EnemyManager.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Swarms\MovingParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleController.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Enemies\Enemy.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Swarms\RuneBoundParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Particle.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Swarms\BoundParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleManager.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Swarms\TransitionParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\RotationDirection.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\WaterRune.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\WindRune.cs" />
+    <Compile Include="Code\GameStates\Ingame\Runes\EarthRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\FireRune.cs" />
     <Compile Include="Code\GameStates\Ingame\Runes\Rune.cs" />
     <Compile Include="Code\GameStates\Ingame\StoneCircle.cs" />
     <Compile Include="Code\GameStates\Ingame\Map.cs" />
-    <Compile Include="Code\GameStates\Ingame\Player.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Player.cs" />
     <Compile Include="Code\GameStates\Ingame\InGameState.cs" />
     <Compile Include="Code\GameStates\MainMenuState.cs" />
     <Compile Include="Code\GUI.cs" />
@@ -104,6 +121,9 @@
     <Content Include="Graphics\circle_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Enemy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Particle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -113,19 +133,37 @@
     <Content Include="Graphics\rune1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\rune1_dot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\rune1_fx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\rune1_glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\rune2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\rune2_dot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\rune2_fx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\rune2_glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\rune3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\rune3_dot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\rune3_fx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\rune3_glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\rune4.png">
@@ -137,7 +175,13 @@
     <Content Include="Graphics\rune5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\rune5_dot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\rune5_fx.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\rune5_glow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="libsndfile-1.dll">
@@ -156,6 +200,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
