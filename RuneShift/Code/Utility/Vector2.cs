@@ -157,7 +157,7 @@ namespace RuneShift.Code.Utility
             return v1.X * v2.X + v1.Y * v2.Y;
         }
 
-        /// <summary>returns the internal angle between the 2 Vectors</summary>
+        /// <summary>returns the internal angle (radian) between the 2 Vectors</summary>
         public static float internalAngle(Vector2 v1, Vector2 v2)
         {
             v1.normalize();
