@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RuneShift.Code.Utility;
+using SFML.Graphics;
 
 namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 {
@@ -13,6 +14,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
         public TransitionParticleSwarm(BoundParticleSwarm startSwarm) : base(0, startSwarm.Position)
         {
             from = startSwarm;
+            ParticleSpeed = 0.1F;
         }
 
         public MovingParticleSwarm Release(BoundParticleSwarm target = null)
@@ -26,9 +28,19 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 
         public override void Update()
         {
+            var maxrotate = (Vector2.Up * 7).rotate((Particles.Count / 200F) * 2 * Helper.PI);
             foreach (Particle particle in Particles)
             {
-                particle.Update(from.Position);
+                var angle = (particle.Position - from.Position).normalized * 7;
+                if (Particles.Count < 200)
+                {
+                    while (Vector2.isInFront(from.Position, maxrotate, angle))
+                    {
+                        angle -= maxrotate;
+                    }
+                }
+                particle.Color = Helper.LerpClamp(particle.Color, Color.White, 0.2F);
+                particle.Update(from.Position + angle, ParticleSpeed);
             }
         }
     }

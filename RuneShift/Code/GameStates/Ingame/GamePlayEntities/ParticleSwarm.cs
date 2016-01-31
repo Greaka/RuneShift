@@ -26,7 +26,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
             {
                 Vector2 posOffset = new Vector2(2.5F * Rand.Value(-1F, 1F), 2.5F * Rand.Value(-1F, 1F));
                 Vector2 dir = new Vector2(Rand.Value(-1F, 1F), Rand.Value(-1F, 1F));
-                Particles.Add(new Particle(position + posOffset, dir, ParticleSpeed));
+                Particles.Add(new Particle(position + posOffset, dir));
             }
         }
 

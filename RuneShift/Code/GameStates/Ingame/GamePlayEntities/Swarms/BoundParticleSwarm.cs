@@ -52,15 +52,8 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
             }
             foreach (Particle particle in Particles)
             {
-                particle.Update(Position);
-                if (Position == Vector2.Zero)
-                {
-                    particle.Color = Color;
-                }
-                else
-                {
-                    particle.Color = Helper.LerpClamp(particle.Color, Color, 0.1F);
-                }
+                particle.Update(Position, ParticleSpeed);
+                particle.Color = Helper.LerpClamp(particle.Color, Color, 0.02F);
             }
         }
     }

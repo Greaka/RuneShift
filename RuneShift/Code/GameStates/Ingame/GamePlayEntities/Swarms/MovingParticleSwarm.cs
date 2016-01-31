@@ -53,9 +53,9 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
                 else
                 {
                     color = TargetSwarm.Color;
-                    leftdistance = (1 / leftdistance) * 0.1F;
+                    leftdistance = (1 / leftdistance) * 0.02F;
                 }
-                particle.Update(TargetSwarm.Position);
+                particle.Update(TargetSwarm.Position, ParticleSpeed);
                 particle.Color = Helper.LerpClamp(particle.Color, color, leftdistance);
             }
             TransferParticles(transfer);
