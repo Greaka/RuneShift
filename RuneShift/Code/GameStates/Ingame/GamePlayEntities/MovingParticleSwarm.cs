@@ -40,16 +40,18 @@ namespace RuneShift
                     transfer.Add(particle);
                     continue;
                 }
-                else if (leftdistance > t)
+                if (leftdistance > t)
                 {
                     leftdistance /= 2;
+                    leftdistance = (1 / leftdistance) * 0.2F;
                 }
                 else
                 {
                     color = TargetSwarm.Color;
+                    leftdistance = (1 / leftdistance) * 0.1F;
                 }
                 particle.Update(TargetSwarm.Position);
-                particle.Color = Helper.LerpClamp(particle.Color, color, (1/leftdistance) * 0.1F);
+                particle.Color = Helper.LerpClamp(particle.Color, color, leftdistance);
             }
             TransferParticles(transfer);
         }

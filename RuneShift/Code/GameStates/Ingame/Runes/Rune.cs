@@ -42,10 +42,10 @@ namespace RuneShift
                 Sprite.Color = Color.White;
                 Sprite.Texture = StoneTexture;
                 win.Draw(Sprite);
-                var opacity = particleSwarm.Count >= 200 ? (byte) 100 :
-                (byte) (particleSwarm.Count / 2);
+                var opacity = particleSwarm.Count >= 200 ? (byte) 255 :
+                                (byte) (particleSwarm.Count);
                 Sprite.Color = new Color(255, 255, 255, opacity);
-                Sprite.Texture = opacity == 100 ? DotTexture : GlowTexture;
+                Sprite.Texture = opacity == 255 ? DotTexture : GlowTexture;
                 win.Draw(Sprite);
             }
 

@@ -15,7 +15,7 @@ namespace RuneShift
 
         public ParticleManager(Map map)
         {
-            ParticleSwarms.Add(new BoundParticleSwarm(1000, Vector2.Zero, Color.White));
+            ParticleSwarms.Add(new BoundParticleSwarm(1000, Vector2.Zero, Color.Red));
             List<Rune> runes = map.GetAllRunes();
             foreach (Rune rune in runes)
             {
