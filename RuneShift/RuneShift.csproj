@@ -58,6 +58,7 @@
     <Compile Include="Code\GameStates\GameState.cs" />
     <Compile Include="Code\GameStates\IGameState.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\MovingParticleSwarm.cs" />
+    <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleController.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\RuneBoundParticleSwarm.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\ParticleSwarm.cs" />
     <Compile Include="Code\GameStates\Ingame\GamePlayEntities\Particle.cs" />
