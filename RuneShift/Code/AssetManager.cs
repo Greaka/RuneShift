@@ -25,6 +25,7 @@ public class AssetManager
 
         textures.Add(TextureName.EnergyParticle, new Texture("Graphics/Particle.png"));
 
+<<<<<<< HEAD
         textures.Add(TextureName.FireRune, new Texture("Graphics/rune3_fx.png"));
         textures.Add(TextureName.FireRuneGlow, new Texture("Graphics/rune3_glow.png"));
         textures.Add(TextureName.FireRuneDot, new Texture("Graphics/rune3_dot.png"));
@@ -37,6 +38,18 @@ public class AssetManager
         textures.Add(TextureName.EarthRune, new Texture("Graphics/rune5_fx.png"));
         textures.Add(TextureName.EarthRuneGlow, new Texture("Graphics/rune5_glow.png"));
         textures.Add(TextureName.EarthRuneDot, new Texture("Graphics/rune5_dot.png"));
+=======
+        textures.Add(TextureName.Enemy, new Texture("Graphics/Enemy.png"));
+
+        textures.Add(TextureName.FireRune, new Texture("Graphics/rune3.png"));
+        textures.Add(TextureName.FireRuneGlow, new Texture("Graphics/rune3_fx.png"));
+        textures.Add(TextureName.WaterRune, new Texture("Graphics/rune1.png"));
+        textures.Add(TextureName.WaterRuneGlow, new Texture("Graphics/rune1_fx.png"));
+        textures.Add(TextureName.WindRune, new Texture("Graphics/rune2.png"));
+        textures.Add(TextureName.WindRuneGlow, new Texture("Graphics/rune2_fx.png"));
+        textures.Add(TextureName.EarthRune, new Texture("Graphics/rune5.png"));
+        textures.Add(TextureName.EarthRuneGlow, new Texture("Graphics/rune5_fx.png"));
+>>>>>>> 1c73a6d41e720c7ca0fd7f2a3f773bff35446f93
     }
 
     public enum TextureName
@@ -49,6 +62,8 @@ public class AssetManager
         Circle3,
         
         EnergyParticle,
+
+        Enemy,
 
         FireRune,
         FireRuneGlow,

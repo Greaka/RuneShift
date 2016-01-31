@@ -10,9 +10,10 @@ namespace RuneShift
     {
         private Sprite bg;
         
-        Map Map;
         bool resetView;
 
+        Map Map;
+        EnemyManager EnemyManager;
         ParticleManager ParticleManager;
         Player Player;
 
@@ -21,17 +22,19 @@ namespace RuneShift
             bg = new Sprite(AssetManager.getTexture(AssetManager.TextureName.InGameBackground));
             bg.Origin = (Vector2) bg.Texture.Size / 2F;
             bg.Scale = Vector2.One * 0.08F;
-
-            this.Map = new Map();
+            
             resetView = true;
 
+            this.Map = new Map();
             ParticleManager = new ParticleManager(Map);
             Player = new Player(ParticleManager, Map);
+            EnemyManager = new EnemyManager(Player);
         }
 
         public GameState update()
         {
             Map.Update();
+            EnemyManager.Update();
             ParticleManager.Update();
             Player.Update();
 
@@ -47,10 +50,11 @@ namespace RuneShift
                 resetView = false;
             }
             win.Draw(bg);
+
             Map.Draw(win);
             ParticleManager.Draw(win);
-
-            Player.Draw(win, view);
+            EnemyManager.Draw(win);
+            Player.Draw(win);
         }
 
         public void drawGUI(GUI gui)
