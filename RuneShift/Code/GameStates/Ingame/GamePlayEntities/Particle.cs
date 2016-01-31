@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class Particle
+    class Particle
     {
         public Vector2 Position;
         Vector2 Direction;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-public class Rand
+class Rand
 {
     //random object with seed init
     //and deterministic sequence

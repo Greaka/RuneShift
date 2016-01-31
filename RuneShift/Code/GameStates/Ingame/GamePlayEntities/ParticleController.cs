@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public class ParticleController
+    class ParticleController
     {
         ParticleManager ParticleManager;
         Map Map;

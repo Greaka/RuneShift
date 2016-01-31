@@ -3,7 +3,7 @@ using SFML.Window;
 using System;
 using System.Collections.Generic;
 
-public class AnimatedSprite : Sprite
+class AnimatedSprite : Sprite
 {
     public float secondsPerFrame { get; private set; }
     public Vector2i spriteSize { get; private set; }

@@ -59,6 +59,7 @@ namespace RuneShift
 
         public void drawGUI(GUI gui)
         {
+            Player.DrawGUI(gui);
         }
     }
 }

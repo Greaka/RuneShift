@@ -15,34 +15,22 @@ namespace RuneShift
             this.win = win;
         }
 
-        public void Draw(Sprite sprite)
+        public void Draw<T>(T transformDrawable) where T : Transformable, Drawable
         {
-            // work on a copy, instead of the original, for the original could be reused outside this scope
-            Sprite spriteCopy = new Sprite(sprite);
+            Vector2 originalScale = transformDrawable.Scale;
+            Vector2 originalPosition = transformDrawable.Position;
 
-            // modify sprite, to fit it in the gui
+            // modify drawable, to fit it in the gui
             float viewScale = (float)view.Size.X / win.Size.X;
 
-            spriteCopy.Scale *= viewScale;
-            spriteCopy.Position = view.Center - view.Size / 2F + spriteCopy.Position * viewScale;
+            transformDrawable.Scale *= viewScale;
+            transformDrawable.Position = view.Center - view.Size / 2F + transformDrawable.Position * viewScale;
 
-            // draw the sprite
-            win.Draw(spriteCopy);
-        }
+            win.Draw(transformDrawable);
 
-        public void Draw(Text text)
-        {
-            // work on a copy, instead of the original, for the original could be reused outside this scope
-            Text textCopy = new Text(text);
-
-            // modify sprite, to fit it in the gui
-            float viewScale = (float)view.Size.X / win.Size.X;
-
-            textCopy.Scale *= viewScale;
-            textCopy.Position = view.Center - view.Size / 2F + textCopy.Position * viewScale;
-
-            // draw the sprite
-            win.Draw(textCopy);
+            // reset to originalValues
+            transformDrawable.Scale = originalScale;
+            transformDrawable.Position = originalPosition;
         }
     }
 }

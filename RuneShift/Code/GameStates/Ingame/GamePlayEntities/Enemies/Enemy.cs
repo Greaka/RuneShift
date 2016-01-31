@@ -9,7 +9,7 @@ using SFML.Window;
 
 namespace RuneShift
 {
-    public abstract class Enemy
+    abstract class Enemy
     {
         protected Sprite Sprite;
         public Vector2 Position { get { return Sprite.Position; } protected set { Sprite.Position = value; } }
