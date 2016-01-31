@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML;
+﻿using System.Collections.Generic;
+using RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms;
+using RuneShift.Code.GameStates.Ingame.Runes;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
-using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 {
     class ParticleManager
     {
-        List<ParticleSwarm> ParticleSwarms = new List<ParticleSwarm>();
+        public List<ParticleSwarm> ParticleSwarms = new List<ParticleSwarm>();
 
         public ParticleManager(Map map)
         {
@@ -59,12 +56,10 @@ namespace RuneShift
             return nearestSwarm;
         }
 
-        public void TransferParticles(BoundParticleSwarm from, BoundParticleSwarm to, int num)
+        public void TransferParticles(BoundParticleSwarm from, TransitionParticleSwarm to, int num)
         {
             List<Particle> transferParticles = from.RemoveRandomParticles(num);
-            var transitioner = new MovingParticleSwarm(0, from.Position, to);
-            ParticleSwarms.Add(transitioner);
-            transitioner.AddParticles(transferParticles);
+            to.AddParticles(transferParticles);
         }
 
         public void Draw(RenderWindow win)

@@ -1,8 +1,8 @@
-﻿using SFML.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using RuneShift.Code.Utility;
+using SFML.Graphics;
 
-namespace RuneShift
+namespace RuneShift.Code
 {
     class GUI
     {

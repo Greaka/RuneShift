@@ -1,11 +1,12 @@
-﻿using SFML.Graphics;
-using SFML.Window;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using RuneShift.Code.GameStates;
+using RuneShift.Code.GameStates.Ingame;
+using RuneShift.Code.Utility;
+using SFML.Graphics;
+using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code
 {
     class Program
     {

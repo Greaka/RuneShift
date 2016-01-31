@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML;
+using RuneShift.Code.GameStates.Ingame.Runes;
 using SFML.Graphics;
-using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 {
     class RuneBoundParticleSwarm : BoundParticleSwarm
     {

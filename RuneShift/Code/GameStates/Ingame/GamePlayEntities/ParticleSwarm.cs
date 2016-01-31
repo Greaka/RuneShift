@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
-using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 {
     abstract class ParticleSwarm
     {

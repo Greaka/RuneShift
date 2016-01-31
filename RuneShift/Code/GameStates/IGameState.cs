@@ -1,6 +1,6 @@
 ﻿using SFML.Graphics;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates
 {
     interface IGameState
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using SFML;
-using SFML.Graphics;
-using SFML.Window;
 using System.Collections.Generic;
+using RuneShift.Code.GameStates.Ingame.Runes;
+using RuneShift.Code.Utility;
+using SFML.Graphics;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame
 {
     class StoneCircle
     {

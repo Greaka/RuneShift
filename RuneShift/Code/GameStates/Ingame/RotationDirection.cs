@@ -1,4 +1,4 @@
-﻿namespace RuneShift
+﻿namespace RuneShift.Code.GameStates.Ingame
 {
     enum RotationDirection
     {

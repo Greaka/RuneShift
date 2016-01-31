@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML;
+﻿using RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 {
     class ParticleController
     {
@@ -15,7 +11,8 @@ namespace RuneShift
         Map Map;
 
         BoundParticleSwarm SelectedSwarm;
-        
+
+        private TransitionParticleSwarm Balken;
         float NumSelectedParticles;
         float SelectingSpeed;
         float SwarmSelectRadius;
@@ -45,6 +42,8 @@ namespace RuneShift
                     if(nearestSwarm != null && distanceToSwarm < SwarmSelectRadius)
                     {
                         SelectedSwarm = nearestSwarm;
+                        Balken = new TransitionParticleSwarm(SelectedSwarm);
+                        ParticleManager.ParticleSwarms.Add(Balken);
                     }
                 }
             }
@@ -55,6 +54,11 @@ namespace RuneShift
                     NumSelectedParticles += SelectingSpeed;
                     if (NumSelectedParticles > SelectedSwarm.Count)
                         NumSelectedParticles = SelectedSwarm.Count;
+                    if (NumSelectedParticles > 1)
+                    {
+                        ParticleManager.TransferParticles(SelectedSwarm, Balken, (int) NumSelectedParticles);
+                        NumSelectedParticles %= 1;
+                    }
                 }
                 else
                 {
@@ -63,9 +67,13 @@ namespace RuneShift
                     BoundParticleSwarm targetSwarm = ParticleManager.GetNearestBoundSwarm(releasePosition, out distanceToSwarm);
                     if (targetSwarm != null && distanceToSwarm < SwarmSelectRadius)
                     {
-                        ParticleManager.TransferParticles(SelectedSwarm, targetSwarm, (int)NumSelectedParticles);
+                        ParticleManager.ParticleSwarms.Add(Balken.Release(targetSwarm));
+                        ParticleManager.ParticleSwarms.Remove(Balken);
                     }
+                    else
+                        Balken.Release();
                     SelectedSwarm = null;
+                    Balken = null;
                     NumSelectedParticles = 0F;
                 }
             }
