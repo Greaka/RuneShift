@@ -34,6 +34,23 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
             this.Position = position;
         }
 
+        public static HashSet<Rune> GetAdjacentRunesRecursively(Rune startRune)
+        {
+            HashSet<Rune> visitedRunes = new HashSet<Rune>();
+            GetAdjacentRunesRecursivelyHelper(startRune, visitedRunes);
+            return visitedRunes;
+        }
+
+        private static void GetAdjacentRunesRecursivelyHelper(Rune startRune, HashSet<Rune> visitedRunes)
+        {
+            visitedRunes.Add(startRune);
+            foreach (Rune adjacentRune in startRune.AdjacentRunes)
+            {
+                if(!visitedRunes.Contains(adjacentRune))
+                    GetAdjacentRunesRecursivelyHelper(adjacentRune, visitedRunes);
+            }
+        }
+
         public void Draw(RenderWindow win)
         {
             if(Sprite != null)
@@ -48,7 +65,7 @@ namespace RuneShift.Code.GameStates.Ingame.Runes
                 win.Draw(Sprite);
             }
 
-            DebugDraw(win);
+            //DebugDraw(win);
         }
 
         RectangleShape debugGraphic = new RectangleShape(Vector2.One);

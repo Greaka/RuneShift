@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
+using RuneShift.Code.GameStates.Ingame;
+using RuneShift.Code.GameStates.Ingame.GamePlayEntities;
+using RuneShift.Code.GameStates.Ingame.Runes;
+using RuneShift.Code.Utility;
 
 namespace RuneShift
 {
@@ -45,13 +49,23 @@ namespace RuneShift
             {
                 if(!RuneAlignmentLink.ContainsKey(rune))
                 {
-                //TODO: create new Alignment
+                    HashSet<Rune> runeAlignment = Rune.GetAdjacentRunesRecursively(rune);
+                    Alignment alignment = new Alignment(runeAlignment);
+                    foreach (Rune r in runeAlignment)
+                    {
+                        RuneAlignmentLink[r] = alignment;
+                    }
+                    Alignments.Add(alignment);
                 }
             }
         }
 
         public void Draw(RenderWindow win)
         {
+            foreach (Alignment alignment in Alignments)
+            {
+                alignment.Draw(win);
+            }
         }
     }
 }

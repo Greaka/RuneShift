@@ -6,24 +6,26 @@ using System.Threading.Tasks;
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
+using RuneShift.Code.GameStates.Ingame.Runes;
+using RuneShift.Code.Utility;
 
 namespace RuneShift
 {
     class Alignment
     {
-        public List<Rune> Runes = new List<Rune>();
+        public List<Rune> Runes;
 
-        public Alignment(List<Rune> runes)
+        public Alignment(ICollection<Rune> runes)
         {
             if (runes.Count <= 0)
                 throw new Exception("Can't create empty Alignments");
 
-            this.Runes = runes;
+            this.Runes = new List<Rune>(runes);
         }
 
         public bool IsIntact()
         {
-            HashSet<Rune> possiblyChangedAlignedRunes = GetAdjacentRunesRecursively(Runes[0]);
+            HashSet<Rune> possiblyChangedAlignedRunes = Rune.GetAdjacentRunesRecursively(Runes[0]);
 
             int matchingRuneCount = 0;
             foreach (Rune rune in possiblyChangedAlignedRunes)
@@ -35,23 +37,6 @@ namespace RuneShift
             }
 
             return matchingRuneCount == Runes.Count;
-        }
-
-        private HashSet<Rune> GetAdjacentRunesRecursively(Rune startRune)
-        {
-            HashSet<Rune> visitedRunes = new HashSet<Rune>();
-            GetAdjacentRunesRecursivelyHelper(startRune, visitedRunes);
-            return visitedRunes;
-        }
-
-        private void GetAdjacentRunesRecursivelyHelper(Rune startRune, HashSet<Rune> visitedRunes)
-        {
-            visitedRunes.Add(startRune);
-            foreach (Rune adjacentRune in startRune.AdjacentRunes)
-            {
-                if(!visitedRunes.Contains(adjacentRune))
-                    GetAdjacentRunesRecursivelyHelper(adjacentRune, visitedRunes);
-            }
         }
 
         public void Draw(RenderWindow win)
