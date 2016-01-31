@@ -1,31 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML;
+﻿using System.Collections.Generic;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
-using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 {
     class MovingParticleSwarm : ParticleSwarm
     {
         protected BoundParticleSwarm TargetSwarm;
+        private Vector2 startPos;
         private float t;
 
-        public MovingParticleSwarm(int particleCount, Vector2 startPosition, BoundParticleSwarm TargetSwarm)
+        public MovingParticleSwarm(int particleCount, Vector2 startPosition, BoundParticleSwarm target)
             : base(particleCount, startPosition)
         {
-            this.TargetSwarm = TargetSwarm;
-            t = (TargetSwarm.Position - startPosition).length/2;
+            startPos = startPosition;
+            if (target != null)
+                SetTarget(target);
+        }
+
+        public void SetTarget(BoundParticleSwarm target)
+        {
+            this.TargetSwarm = target;
+            t = (TargetSwarm.Position - startPos).length / 2;
         }
 
         private void TransferParticles(List<Particle> particles)
         {
-            foreach (Particle particle in particles)
-                this.Particles.Remove(particle);
             TargetSwarm.AddParticles(particles);
+            foreach (var particle in particles)
+            {
+                this.Particles.Remove(particle);
+            }
         }
 
         public override void Update()
@@ -43,7 +48,7 @@ namespace RuneShift
                 if (leftdistance > t)
                 {
                     leftdistance /= 2;
-                    leftdistance = (1 / leftdistance) * 0.2F;
+                    leftdistance = (1 / leftdistance) * (1 / leftdistance) * 4F;
                 }
                 else
                 {

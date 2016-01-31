@@ -1,9 +1,6 @@
-﻿using System;
-using SFML;
-using SFML.Graphics;
-using SFML.Window;
+﻿using RuneShift.Code.Utility;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.Runes
 {
     class FireRune : Rune
     {

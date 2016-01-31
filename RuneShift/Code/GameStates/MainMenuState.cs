@@ -1,7 +1,8 @@
-﻿using SFML.Graphics;
+﻿using RuneShift.Code.Utility;
+using SFML.Graphics;
 using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates
 {
     class MainMenuState : IGameState
     {

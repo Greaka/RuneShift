@@ -1,10 +1,9 @@
-﻿using System;
-using SFML;
+﻿using System.Collections.Generic;
+using RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
-using SFML.Window;
-using System.Collections.Generic;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame.Runes
 {
     abstract class Rune
     {

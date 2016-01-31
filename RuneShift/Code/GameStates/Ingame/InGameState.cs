@@ -1,10 +1,9 @@
-﻿using System;
-using System.Reflection.Emit;
-using SFML;
+﻿using RuneShift.Code.GameStates.Ingame.GamePlayEntities;
+using RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies;
+using RuneShift.Code.Utility;
 using SFML.Graphics;
-using SFML.Window;
 
-namespace RuneShift
+namespace RuneShift.Code.GameStates.Ingame
 {
     class InGameState : IGameState
     {
