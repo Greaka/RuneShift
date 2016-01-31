@@ -1,6 +1,9 @@
 ﻿using SFML.Graphics;
 using SFML.Window;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RuneShift
 {
@@ -18,6 +21,8 @@ namespace RuneShift
         static RenderWindow win;
         static View view;
         static GUI gui;
+
+        static List<float> FPS = new List<float>();
 
         static void Main(string[] args)
         {
@@ -60,7 +65,16 @@ namespace RuneShift
                 state.drawGUI(gui);
 
                 // some DebugText
-                debugText.DisplayedString = "fps: " + (1.0F / gameTime.EllapsedTime.TotalSeconds);
+                if (FPS.Count > 70)
+                    FPS.Remove(FPS.First());
+                else if (FPS.Count == 0)
+                    FPS.Add(1);
+                else
+                    FPS.Add((float)(1.0F / gameTime.EllapsedTime.TotalSeconds));
+                float sum = 0;
+                for (var i = 0; i < FPS.Count; i++)
+                    sum += FPS[i];
+                debugText.DisplayedString = "fps: " + (int)(sum / FPS.Count);
                 gui.Draw(debugText);
 
                 // do the actual drawing
@@ -72,7 +86,7 @@ namespace RuneShift
 
                 // update GameTime
                 gameTime.Update();
-                int waitTime = (int)((1F / 70F) * 1000F - gameTime.EllapsedTime.Milliseconds);
+                int waitTime = (int)((1F / 60F) * 1000F - gameTime.EllapsedTime.Milliseconds);
                 System.Threading.Thread.Sleep(waitTime >= 0 ? waitTime : 0);
             }
         }
