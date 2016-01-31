@@ -25,6 +25,8 @@ public class AssetManager
 
         textures.Add(TextureName.EnergyParticle, new Texture("Graphics/Particle.png"));
 
+        textures.Add(TextureName.Enemy, new Texture("Graphics/Enemy.png"));
+
         textures.Add(TextureName.FireRune, new Texture("Graphics/rune3.png"));
         textures.Add(TextureName.FireRuneGlow, new Texture("Graphics/rune3_fx.png"));
         textures.Add(TextureName.WaterRune, new Texture("Graphics/rune1.png"));
@@ -45,6 +47,8 @@ public class AssetManager
         Circle3,
         
         EnergyParticle,
+
+        Enemy,
 
         FireRune,
         FireRuneGlow,

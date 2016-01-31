@@ -13,9 +13,16 @@ namespace RuneShift
     {
         ParticleController ParticleController;
 
+        public float Life { get; protected set; }
+
         public Player(ParticleManager particleManager, Map map)
         {
             ParticleController = new ParticleController(particleManager, map);
+        }
+
+        public void recieveDamage(float damage)
+        {
+            Life -= damage;
         }
 
         public void Update()
@@ -23,13 +30,9 @@ namespace RuneShift
             ParticleController.Update();
         }
 
-        public void Draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win)
         {
-            ParticleController.Draw(win, view);
-        }
-
-        private static void DebugDraw(RenderWindow win, View view)
-        {
+            ParticleController.Draw(win);
         }
     }
 }

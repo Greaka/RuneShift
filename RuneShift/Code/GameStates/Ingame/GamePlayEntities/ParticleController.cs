@@ -71,7 +71,7 @@ namespace RuneShift
             }
         }
 
-        public void Draw(RenderWindow win, View view)
+        public void Draw(RenderWindow win)
         {
             if (SelectedSwarm != null)
             {
@@ -83,10 +83,10 @@ namespace RuneShift
                 win.Draw(r);
             }
             
-            DebugDraw(win, view);
+            DebugDraw(win);
         }
 
-        private static void DebugDraw(RenderWindow win, View view)
+        private static void DebugDraw(RenderWindow win)
         {
             if (Mouse.IsButtonPressed(Mouse.Button.Left))
             {
