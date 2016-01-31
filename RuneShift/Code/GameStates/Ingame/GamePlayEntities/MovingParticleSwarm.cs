@@ -24,7 +24,7 @@ namespace RuneShift
         {
             foreach(Particle particle in Particles)
             {
-                particle.Update(TargetPosition);
+                particle.Update(TargetPosition, Color.White);
             }
         }
     }

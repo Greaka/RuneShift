@@ -14,21 +14,26 @@ namespace RuneShift
         public Vector2 Position;
         Vector2 Direction;
         float Speed;
+        public float RotationSpeed { get; private set; }
+        public Color Color = Color.White;
 
         public Particle(Vector2 position, Vector2 direction, float speed)
         {
             this.Position = position;
             this.Direction = direction.normalized;
             this.Speed = speed;
+            this.RotationSpeed = Rand.Value(360F);
         }
 
-        public void Update(Vector2 target)
+        public void Update(Vector2 target, Color targetColor)
         {
             float rotationDirection = -1*(Vector2.isToTheRight(Position, Direction, target) ? 1F : -1F);
 
             Direction.rotate(Rand.Value(0.002F, 0.09F) * rotationDirection);
             
             Position += Direction.normalized * Speed;
+
+            Color = Helper.LerpClamp(Color, targetColor, 0.01F);
         }
     }
 }

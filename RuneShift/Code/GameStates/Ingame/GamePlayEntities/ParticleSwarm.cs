@@ -61,6 +61,8 @@ namespace RuneShift
             foreach (Particle p in Particles)
             {
                 ParticleSprite.Position = p.Position;
+                ParticleSprite.Color = p.Color;
+                ParticleSprite.Rotation += p.RotationSpeed * 0.01F;
                 win.Draw(ParticleSprite);
             }
         }
