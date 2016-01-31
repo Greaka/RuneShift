@@ -18,9 +18,9 @@ namespace RuneShift
             if (Instance == typeof (FireRune))
                 return new Color(236, 0, 0);
             else if (Instance == typeof (WindRune))
-                return new Color(8, 219, 204);
+                return new Color(8, 255, 204);
             else if (Instance == typeof (EarthRune))
-                return new Color(78, 78, 0);
+                return new Color(78, 118, 0);
             else if (Instance == typeof (WaterRune))
                 return new Color(71, 0, 229);
             else

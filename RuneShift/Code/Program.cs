@@ -27,7 +27,7 @@ namespace RuneShift
         static void Main(string[] args)
         {
             // initialize window and view
-            win = new RenderWindow(new VideoMode(800, 600), "Hadoken!!!");
+            win = new RenderWindow(new VideoMode(1300, 900), "Hadoken!!!");
             view = new View();
             resetView();
             gui = new GUI(win, view);
