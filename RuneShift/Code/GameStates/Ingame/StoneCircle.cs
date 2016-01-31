@@ -172,6 +172,11 @@ namespace RuneShift
             return result;
         }
 
+        public List<Rune> GetAllRunes()
+        {
+            return Runes;
+        }
+
         public void Draw(RenderWindow win)
         {
             Sprite.Rotation = -Rotation * Helper.RadianToDegree;

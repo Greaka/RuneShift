@@ -28,7 +28,7 @@ namespace RuneShift
             this.SelectedSwarm = null;
 
             this.NumSelectedParticles = 0F;
-            this.SelectingSpeed = 0.3F;
+            this.SelectingSpeed = 0.8F;
             this.SwarmSelectRadius = 5F;
         }
 
@@ -79,7 +79,7 @@ namespace RuneShift
                 r.Origin = (Vector2)r.Size / 2F;
                 r.Position = SelectedSwarm.Position;
                 r.FillColor = Color.Red;
-                r.Scale = Vector2.One * NumSelectedParticles;
+                r.Scale = Vector2.One * NumSelectedParticles / 10F;
                 win.Draw(r);
             }
             

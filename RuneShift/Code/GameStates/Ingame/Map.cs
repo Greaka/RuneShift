@@ -75,6 +75,16 @@ namespace RuneShift
             return result;
         }
 
+        public List<Rune> GetAllRunes()
+        {
+            List<Rune> result = new List<Rune>();
+            foreach (StoneCircle stoneCircle in StoneCircles)
+            {
+                result.AddRange(stoneCircle.GetAllRunes());
+            }
+            return result;
+        }
+
         public void Draw(RenderWindow win)
         {
             foreach (StoneCircle stoneCircle in StoneCircles)
