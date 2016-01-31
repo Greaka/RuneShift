@@ -52,7 +52,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 
         abstract public void Update();
 
-        public void Draw(RenderWindow win)
+        public virtual void Draw(RenderWindow win)
         {
             foreach (Particle p in Particles)
             {

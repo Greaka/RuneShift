@@ -28,19 +28,15 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 
         public override void Update()
         {
-            var maxrotate = (Vector2.Up * 7).rotate((Particles.Count / 200F) * 2 * Helper.PI);
+            var maxRotation = (Particles.Count / 200F) * 2 * Helper.PI;
+
+            Vector2 target = from.Position + Vector2.Up.rotate(maxRotation) * 7F;
+
             foreach (Particle particle in Particles)
             {
-                var angle = (particle.Position - from.Position).normalized * 7;
-                if (Particles.Count < 200)
-                {
-                    while (Vector2.isInFront(from.Position, maxrotate, angle))
-                    {
-                        angle -= maxrotate;
-                    }
-                }
+                particle.Update(target, ParticleSpeed);
+
                 particle.Color = Helper.LerpClamp(particle.Color, Color.White, 0.2F);
-                particle.Update(from.Position + angle, ParticleSpeed);
             }
         }
     }
