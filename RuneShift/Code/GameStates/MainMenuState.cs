@@ -6,12 +6,13 @@ namespace RuneShift.Code.GameStates
 {
     class MainMenuState : IGameState
     {
-        Text PressEnterText;
+        private Sprite bg;
 
         public MainMenuState()
         {
-            PressEnterText = new Text("Press Enter", new Font("Fonts/calibri.ttf"));
-            PressEnterText.Position = new Vector2(300, 400);
+            bg = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
+            //bg.Origin = (Vector2)bg.Texture.Size / 2F;
+            bg.Scale = Vector2.One * 0.63F;
         }
 
         public GameState update()
@@ -30,7 +31,7 @@ namespace RuneShift.Code.GameStates
 
         public void drawGUI(GUI gui)
         {
-            gui.Draw(PressEnterText);
+            gui.Draw(bg);
         }
     }
 }
