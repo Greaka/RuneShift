@@ -19,7 +19,7 @@ namespace RuneShift.Code.GameStates.Ingame
         StoneCircle NextInnerCircle;
         StoneCircle NextOuterCircle;
 
-        public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
+        public StoneCircle(Random rand, float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
         {
             // Sprite Stuff
             Sprite = new Sprite(texture);
@@ -34,7 +34,7 @@ namespace RuneShift.Code.GameStates.Ingame
             RotationSpeed = Direction * Rand.Value(0.0005F, 0.001F);
 
             // Create Runes
-            CreateRunes(RuneCount);
+            CreateRunes(rand, RuneCount);
             SetRunesAccordingToRotation();
         }
 
@@ -44,14 +44,13 @@ namespace RuneShift.Code.GameStates.Ingame
             NextOuterCircle = nextOuterCircle;
         }
 
-        void CreateRunes(int count)
+        void CreateRunes(Random rand, int count)
         {
-            var fire = count/4 + 1;
+            var fire = count/4 + 3;
             var water = fire;
             var earth = water;
             var air = earth;
             Func<int> sum = () => fire + water + earth + air;
-            Random rand = new Random();
 
             for (int i = 0; i < count; i++)
             {
