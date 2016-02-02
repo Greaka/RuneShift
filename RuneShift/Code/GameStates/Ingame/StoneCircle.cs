@@ -14,6 +14,7 @@ namespace RuneShift.Code.GameStates.Ingame
         float Radius;
         float Rotation;
         float RotationSpeed;
+        private float Direction;
 
         StoneCircle NextInnerCircle;
         StoneCircle NextOuterCircle;
@@ -28,14 +29,12 @@ namespace RuneShift.Code.GameStates.Ingame
             // Rotation
             this.Radius = radius;
             this.Rotation = 0F;
+            this.Direction = rotationDirection == RotationDirection.Clockwise ? -1F : 1F;
 
-            RotationSpeed = (rotationDirection == RotationDirection.Clockwise ? -1F : 1F) * Rand.Value(0.0005F, 0.001F);
+            RotationSpeed = Direction * Rand.Value(0.0005F, 0.001F);
 
             // Create Runes
-            for (int i = 0; i < RuneCount; ++i)
-            {
-                Runes.Add(CreateRandomRune(Vector2.Zero));
-            }
+            CreateRunes(RuneCount);
             SetRunesAccordingToRotation();
         }
 
@@ -45,24 +44,48 @@ namespace RuneShift.Code.GameStates.Ingame
             NextOuterCircle = nextOuterCircle;
         }
 
-        Rune CreateRandomRune(Vector2 position)
+        void CreateRunes(int count)
         {
-            float rand = Rand.Value();
-            float probabiltiyPerRuneKind = 1F / 4F;
+            var fire = count/4 + 1;
+            var water = fire;
+            var earth = water;
+            var air = earth;
+            Func<int> sum = () => fire + water + earth + air;
+            Random rand = new Random();
 
-            if (rand < probabiltiyPerRuneKind)
-                return new FireRune(position);
-            else if (rand < probabiltiyPerRuneKind * 2F)
-                return new EarthRune(position);
-            else if (rand < probabiltiyPerRuneKind * 3F)
-                return new WaterRune(position);
-            else
-                return new WindRune(position);
+            for (int i = 0; i < count; i++)
+            {
+                var type = rand.Next(0, sum.Invoke());
+
+                if (type < fire)
+                {
+                    fire--;
+                    Runes.Add(new FireRune(Vector2.Zero));
+                } else if (type < fire + water)
+                {
+                    water--;
+                    Runes.Add(new WaterRune(Vector2.Zero));
+                }
+                else if(type < fire + water + earth)
+                {
+                    earth--;
+                    Runes.Add(new EarthRune(Vector2.Zero));
+                } else 
+                {
+                    air--;
+                    Runes.Add(new WindRune(Vector2.Zero));
+                }
+            }
         }
 
         public void UpdateRotation()
         {
-            Rotation += RotationSpeed;
+            var sum = 0;
+            foreach (var rune in Runes)
+            {
+                sum += rune.particleSwarm.Count;
+            }
+            Rotation += RotationSpeed - sum * 0.000001F * Direction;
             SetRunesAccordingToRotation();
         }
 
