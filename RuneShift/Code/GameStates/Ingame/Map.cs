@@ -16,7 +16,7 @@ namespace RuneShift.Code.GameStates.Ingame
             float circleDistance = 9.5F;
             var rotation = Enum.GetValues(typeof(RotationDirection));
 
-            StoneCircles.Add(new StoneCircle(innerRadius,                       3, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle0_Innermost)));
+            StoneCircles.Add(new StoneCircle(innerRadius,                       4, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle0_Innermost)));
             StoneCircles.Add(new StoneCircle(innerRadius + circleDistance     , 6, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle1)));
             StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 2F, 7, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle2)));
             StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 3F, 9, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle3)));
