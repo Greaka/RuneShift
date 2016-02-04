@@ -15,7 +15,7 @@ namespace RuneShift.Code.GameStates
 
         public GameState update()
         {
-            if (KeyboardInputManager.upward(Keyboard.Key.Return))
+            if (Mouse.IsButtonPressed(Mouse.Button.Left) || KeyboardInputManager.upward(Keyboard.Key.Return))
             {
                 return GameState.InGame;
             }

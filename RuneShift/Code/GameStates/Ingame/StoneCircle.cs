@@ -32,9 +32,20 @@ namespace RuneShift.Code.GameStates.Ingame
             RotationSpeed = (rotationDirection == RotationDirection.Clockwise ? -1F : 1F) * Rand.Value(0.0005F, 0.001F);
 
             // Create Runes
+            int randomElemetIndex = Rand.IntValue((int)Element.Count);
+            int elemetCount = (int)Element.Count;
             for (int i = 0; i < RuneCount; ++i)
             {
-                Runes.Add(CreateRandomRune(Vector2.Zero));
+                if (i < RuneCount - 4)
+                    Runes.Add(CreateRandomRune(Vector2.Zero));
+                else
+                {
+                    Rune rune = CreateRune(Vector2.Zero, (Element)((randomElemetIndex + i) % elemetCount));
+                    if (!Runes.Exists(r => r.GetType() == rune.GetType()))
+                        Runes.Add(rune);
+                    else
+                        Runes.Add(CreateRandomRune(Vector2.Zero));
+                }
             }
             SetRunesAccordingToRotation();
         }
@@ -47,17 +58,24 @@ namespace RuneShift.Code.GameStates.Ingame
 
         Rune CreateRandomRune(Vector2 position)
         {
-            float rand = Rand.Value();
-            float probabiltiyPerRuneKind = 1F / 4F;
+            return CreateRune(position, (Element)Rand.IntValue((int)Element.Count));
+        }
 
-            if (rand < probabiltiyPerRuneKind)
-                return new FireRune(position);
-            else if (rand < probabiltiyPerRuneKind * 2F)
-                return new EarthRune(position);
-            else if (rand < probabiltiyPerRuneKind * 3F)
-                return new WaterRune(position);
-            else
-                return new WindRune(position);
+        Rune CreateRune(Vector2 position, Element element)
+        {
+            switch (element)
+            {
+                case Element.Earth:
+                    return new EarthRune(position);
+                case Element.Fire:
+                    return new FireRune(position);
+                case Element.Water:
+                    return new WaterRune(position);
+                case Element.Wind:
+                    return new WindRune(position);
+                default:
+                    throw new Exception("Rune of element " + element + " does not known");
+            }
         }
 
         public void UpdateRotation()

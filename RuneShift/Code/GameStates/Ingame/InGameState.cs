@@ -40,6 +40,8 @@ namespace RuneShift.Code.GameStates.Ingame
             AlignmentManager.Update();
             Player.Update();
 
+            if (Player.Life <= 0)
+                return GameState.MainMenu;
             return GameState.InGame;
         }
 
@@ -63,6 +65,7 @@ namespace RuneShift.Code.GameStates.Ingame
         public void drawGUI(GUI gui)
         {
             Player.DrawGUI(gui);
+            EnemyManager.DrawGUI(gui);
         }
     }
 }

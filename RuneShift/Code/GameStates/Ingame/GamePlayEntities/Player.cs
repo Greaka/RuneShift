@@ -5,6 +5,9 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 {
     class Player
     {
+        Text DisplayedInfo;
+        RectangleShape LifeBar;
+
         ParticleController ParticleController;
 
         public readonly float MaxLife;
@@ -12,6 +15,12 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 
         public Player(ParticleManager particleManager, Map map)
         {
+            DisplayedInfo = new Text("Life: " + MaxLife, new Font("Fonts/calibri.ttf"));
+            DisplayedInfo.Position = new Vector2(20, 200);
+            LifeBar = new RectangleShape(new Vector2(20, Life));
+            LifeBar.Position = new Vector2(20, 250);
+            LifeBar.Size = new Vector2(20, 200);
+
             this.ParticleController = new ParticleController(particleManager, map);
             this.MaxLife = 100F;
             this.Life = MaxLife;
@@ -34,9 +43,10 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
 
         public void DrawGUI(GUI gui)
         {
-            RectangleShape r = new RectangleShape(new Vector2(20, Life));
-            r.Position = new Vector2(20, 70);
-            gui.Draw(r);
+            DisplayedInfo.DisplayedString = "Life: " + (int)Life;
+            gui.Draw(DisplayedInfo);
+            LifeBar.Scale = new Vector2(LifeBar.Scale.X, Life / MaxLife);
+            gui.Draw(LifeBar);
         }
     }
 }
