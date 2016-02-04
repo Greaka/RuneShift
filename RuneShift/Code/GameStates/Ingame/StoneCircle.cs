@@ -46,10 +46,11 @@ namespace RuneShift.Code.GameStates.Ingame
 
         void CreateRunes(int count)
         {
-            var fire = count/4 + 3;
-            var water = fire;
-            var earth = water;
-            var air = earth;
+            int genericNumber = count / 4 + 3;
+            int fire = genericNumber;
+            int water = genericNumber;
+            int earth = genericNumber;
+            int air = genericNumber;
             Func<int> sum = () => fire + water + earth + air;
 
             for (int i = 0; i < count; i++)
