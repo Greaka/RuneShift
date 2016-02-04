@@ -8,5 +8,6 @@ namespace RuneShift.Code.GameStates.Ingame
         Wind,
         Earth,
         Count,
+        None,
     }
 }

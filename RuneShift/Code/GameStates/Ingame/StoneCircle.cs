@@ -46,35 +46,29 @@ namespace RuneShift.Code.GameStates.Ingame
 
         void CreateRunes(int count)
         {
-            int genericNumber = count / 4 + 3;
-            int fire = genericNumber;
-            int water = genericNumber;
-            int earth = genericNumber;
-            int air = genericNumber;
-            Func<int> sum = () => fire + water + earth + air;
+            Element[] elements = new Element[count];
 
-            for (int i = 0; i < count; i++)
+            int offset = Rand.IntValue(4);
+            for (int i = 0; i < count; ++i)
             {
-                var type = Rand.IntValue(0, sum.Invoke());
+                elements[i] = (Element)((i + offset) % (int)Element.Count);
+            }
+            Rand.Permutate(elements, count * 2);
 
-                if (type < fire)
-                {
-                    fire--;
-                    Runes.Add(new FireRune(Vector2.Zero));
-                } else if (type < fire + water)
-                {
-                    water--;
-                    Runes.Add(new WaterRune(Vector2.Zero));
-                }
-                else if(type < fire + water + earth)
-                {
-                    earth--;
-                    Runes.Add(new EarthRune(Vector2.Zero));
-                } else 
-                {
-                    air--;
-                    Runes.Add(new WindRune(Vector2.Zero));
-                }
+            for (int i = 0; i < count; ++i)
+            {
+                CreateRune(elements[i]);
+            }
+        }
+
+        void CreateRune(Element element)
+        {
+            switch (element)
+            {
+                case Element.Earth: Runes.Add(new EarthRune(Vector2.Zero)); break;
+                case Element.Fire: Runes.Add(new FireRune(Vector2.Zero)); break;
+                case Element.Water: Runes.Add(new WaterRune(Vector2.Zero)); break;
+                case Element.Wind: Runes.Add(new WindRune(Vector2.Zero)); break;
             }
         }
 
