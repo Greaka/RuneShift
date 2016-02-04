@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using SFML.Graphics;
 
 namespace RuneShift.Code
@@ -18,10 +20,9 @@ namespace RuneShift.Code
 
         static void LoadTextures()
         {
-            textures.Add(TextureName.MainMenuBackground, new Texture("Graphics/screen.png"));
-
-            textures.Add(TextureName.InGameBackground, new Texture("Graphics/background.png"));
-
+            const string path = "Graphics/{0}.png";
+            textures.Add(TextureName.MainMenuBackground, new Texture(string.Format(path, "screen")));
+            textures.Add(TextureName.InGameBackground, new Texture(string.Format(path, "background")));
 
             textures.Add(TextureName.Circle0_Innermost, new Texture("Graphics/circle_0.png"));
             textures.Add(TextureName.Circle1, new Texture("Graphics/circle_1.png"));
@@ -49,7 +50,6 @@ namespace RuneShift.Code
         public enum TextureName
         {
             MainMenuBackground,
-
             InGameBackground,
 
             Circle0_Innermost,

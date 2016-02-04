@@ -31,7 +31,6 @@ namespace RuneShift.Code.GameStates
 
         public void drawGUI(GUI gui)
         {
-
         }
     }
 }

@@ -28,9 +28,9 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Swarms
 
         public override void Update()
         {
-            var maxRotation = (Particles.Count / 200F) * 2 * Helper.PI;
+            var maxRotation = (Particles.Count / 350F) * 2 * Helper.PI;
 
-            Vector2 target = from.Position + Vector2.Up.rotate(maxRotation) * 7F;
+            Vector2 target = from.Position + Vector2.Up.rotate(maxRotation) * 10F;
 
             foreach (Particle particle in Particles)
             {

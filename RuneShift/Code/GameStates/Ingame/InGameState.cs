@@ -39,9 +39,10 @@ namespace RuneShift.Code.GameStates.Ingame
             ParticleManager.Update();
             AlignmentManager.Update();
             Player.Update();
-
             if (Player.Life <= 0)
+            {
                 return GameState.MainMenu;
+            }
             return GameState.InGame;
         }
 
