@@ -14,12 +14,11 @@ namespace RuneShift.Code.GameStates.Ingame
         {
             float innerRadius = 15F;
             float circleDistance = 9.5F;
-            var rotation = Enum.GetValues(typeof(RotationDirection));
 
-            StoneCircles.Add(new StoneCircle(innerRadius,                       4, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle0_Innermost)));
-            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance     , 6, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle1)));
-            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 2F, 7, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle2)));
-            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 3F, 9, (RotationDirection)rotation.GetValue(Rand.IntValue(rotation.Length)), AssetManager.getTexture(AssetManager.TextureName.Circle3)));
+            StoneCircles.Add(new StoneCircle(innerRadius,                       4, RotationDirection.Clockwise, AssetManager.getTexture(AssetManager.TextureName.Circle0_Innermost)));
+            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance,      6, RotationDirection.CounterClockwise, AssetManager.getTexture(AssetManager.TextureName.Circle1)));
+            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 2F, 7, RotationDirection.Clockwise, AssetManager.getTexture(AssetManager.TextureName.Circle2)));
+            StoneCircles.Add(new StoneCircle(innerRadius + circleDistance * 3F, 9, RotationDirection.CounterClockwise, AssetManager.getTexture(AssetManager.TextureName.Circle3)));
             for (int i = 0; i < StoneCircles.Count; ++i)
             {
                 StoneCircle nextInner = i - 1 < 0 ? null : StoneCircles[i - 1];
