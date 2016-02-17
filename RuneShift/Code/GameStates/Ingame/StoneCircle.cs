@@ -46,7 +46,7 @@ namespace RuneShift.Code.GameStates.Ingame
 
         void CreateRunes(Random rand, int count)
         {
-            var fire = count/4 + 2;
+            var fire = count/4 + 3;
             var water = fire;
             var earth = water;
             var air = earth;
