@@ -6,6 +6,8 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
 {
     class EnemyManager
     {
+        Text DisplayedInfo;
+
         Player Player;
 
         List<Enemy> Enemies = new List<Enemy>();
@@ -13,8 +15,13 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
         float FramesPerEnemySpawn;
         float NextEnemyCountDown;
 
+        int NumKilledEnemies = 0;
+
         public EnemyManager(Player player)
         {
+            DisplayedInfo = new Text("#enemies ---, #killed ---", new Font("Fonts/calibri.ttf"));
+            DisplayedInfo.Position = Vector2.Right * 700;
+
             FramesPerEnemySpawn = 60F * 5F;
             NextEnemyCountDown = 60F * 5F;
 
@@ -45,6 +52,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
             foreach (Enemy enemy in cachedEnemiesForDelete)
             {
                 Enemies.Remove(enemy);
+                NumKilledEnemies++;
             }
         }
 
@@ -54,6 +62,12 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
             {
                 enemy.Draw(win);
             }
+        }
+
+        public void DrawGUI(GUI gui)
+        {
+            DisplayedInfo.DisplayedString = "#Knights: " + Enemies.Count + "\n#Killed: " + NumKilledEnemies;
+            gui.Draw(DisplayedInfo);
         }
     }
 }

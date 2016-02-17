@@ -79,9 +79,6 @@ namespace RuneShift
                 {
                     DrawLine(win, Runes[i].Position, Runes[j].Position);
                 }
-                RectangleShape r = new RectangleShape(Vector2.One);
-                r.Position = Runes[i].Position;
-                win.Draw(r);
             }
         }
 

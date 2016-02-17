@@ -8,7 +8,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
     class Knight : Enemy
     {
         float DamageRadiusSqr = 2F * 2F;
-        float Strength = 2F;
+        float Strength = 10F;
 
         public Element element;
 
@@ -29,7 +29,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities.Enemies
                 return;
             }
 
-            Position -= Position.normalized * 0.015F;
+            Position -= Position.normalized * 0.0075F;
 
             if (Position.lengthSqr < DamageRadiusSqr)
             {

@@ -11,8 +11,7 @@ namespace RuneShift.Code
 {
     class Program
     {
-        public static GameTime gameTime;
-        public static int inGameFrameCount { get; private set; }
+        public static readonly float fixedFps = 120F;
 
         static bool running = true;
 
@@ -24,12 +23,10 @@ namespace RuneShift.Code
         static View view;
         static GUI gui;
 
-        static List<float> FPS = new List<float>();
-
         static void Main(string[] args)
         {
             // initialize window and view
-            win = new RenderWindow(new VideoMode(1300, 900), "Hadoken!!!");
+            win = new RenderWindow(new VideoMode(1000, 700), "Hadoken!!!");
             view = new View();
             resetView();
             gui = new GUI(win, view);
@@ -42,7 +39,7 @@ namespace RuneShift.Code
             handleNewGameState();
 
             // initialize GameTime
-            gameTime = new GameTime();
+            GameTime gameTime = new GameTime();
             gameTime.Start();
 
             // debug Text
@@ -52,32 +49,18 @@ namespace RuneShift.Code
             {
                 KeyboardInputManager.update();
 
-                if (currentGameState == GameState.InGame) 
-                { inGameFrameCount++; }
                 currentGameState = state.update();
-
-                if (currentGameState != prevGameState)
-                {
-                    handleNewGameState();
-                }
 
                 // gather draw-stuff
                 win.Clear(new Color(100, 149, 237));    //cornflowerblue ftw!!! 1337
                 state.draw(win, view);
                 state.drawGUI(gui);
 
-                // some DebugText
-                if (FPS.Count > 70)
-                    FPS.Remove(FPS.First());
-                else if (FPS.Count == 0)
-                    FPS.Add(1);
-                else
-                    FPS.Add((float)(1.0F / gameTime.EllapsedTime.TotalSeconds));
-                float sum = 0;
-                for (var i = 0; i < FPS.Count; i++)
-                    sum += FPS[i];
-                debugText.DisplayedString = "fps: " + (int)(sum / FPS.Count);
-                gui.Draw(debugText);
+                // first the state must be drawn, before I can change the currentState
+                if (currentGameState != prevGameState)
+                {
+                    handleNewGameState();
+                }
 
                 // do the actual drawing
                 win.SetView(view);
@@ -88,8 +71,16 @@ namespace RuneShift.Code
 
                 // update GameTime
                 gameTime.Update();
-                int waitTime = (int)((1F / 60F) * 1000F - gameTime.EllapsedTime.Milliseconds);
-                System.Threading.Thread.Sleep(waitTime >= 0 ? waitTime : 0);
+                float deltaTime = (float)gameTime.EllapsedTime.TotalSeconds;
+
+                // idleLoop for fixed FrameRate
+                float deltaPlusIdleTime = deltaTime;
+                while (deltaPlusIdleTime < (1F / fixedFps))
+                {
+                    gameTime.Update();
+                    deltaPlusIdleTime += (float)gameTime.EllapsedTime.TotalSeconds;
+                }
+                Console.WriteLine("real fps: " + (int)(1F / deltaPlusIdleTime) + ", theo fps: " + (int)(1F / deltaTime));
             }
         }
 

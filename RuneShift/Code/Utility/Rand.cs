@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace RuneShift.Code.Utility
 {
@@ -57,6 +59,20 @@ namespace RuneShift.Code.Utility
         public static int IntValue(int minValue, int maxValue)
         {
             return random.Next(minValue, maxValue);
+        }
+
+        public static void Permutate<T>(IList<T> collection, int numSwaps) 
+        {
+            int size = collection.Count;
+            for (int i = 0; i < numSwaps; ++i)
+            {
+                int from = IntValue(size);
+                int to = IntValue(size);
+                
+                T tmp = collection[from];
+                collection[from] = collection[to];
+                collection[to] = tmp;
+            }
         }
     }
 }

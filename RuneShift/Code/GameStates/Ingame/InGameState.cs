@@ -66,6 +66,7 @@ namespace RuneShift.Code.GameStates.Ingame
         public void drawGUI(GUI gui)
         {
             Player.DrawGUI(gui);
+            EnemyManager.DrawGUI(gui);
         }
     }
 }

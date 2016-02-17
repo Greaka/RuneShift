@@ -6,18 +6,16 @@ namespace RuneShift.Code.GameStates
 {
     class MainMenuState : IGameState
     {
-        private Sprite bg;
+        Sprite Background;
 
         public MainMenuState()
         {
-            bg = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
-            //bg.Origin = (Vector2)bg.Texture.Size / 2F;
-            bg.Scale = Vector2.One * 0.63F;
+            Background = new Sprite(AssetManager.getTexture(AssetManager.TextureName.MainMenuBackground));
         }
 
         public GameState update()
         {
-            if (KeyboardInputManager.upward(Keyboard.Key.Return))
+            if (Mouse.IsButtonPressed(Mouse.Button.Left) || KeyboardInputManager.upward(Keyboard.Key.Return))
             {
                 return GameState.InGame;
             }
@@ -27,11 +25,12 @@ namespace RuneShift.Code.GameStates
 
         public void draw(RenderWindow win, View view)
         {
+            Background.Scale = (Vector2)win.Size / (Vector2)Background.Texture.Size;
+            win.Draw(Background);
         }
 
         public void drawGUI(GUI gui)
         {
-            gui.Draw(bg);
         }
     }
 }

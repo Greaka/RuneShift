@@ -19,7 +19,7 @@ namespace RuneShift.Code.GameStates.Ingame
         StoneCircle NextInnerCircle;
         StoneCircle NextOuterCircle;
 
-        public StoneCircle(Random rand, float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
+        public StoneCircle(float radius, int RuneCount, RotationDirection rotationDirection, Texture texture)
         {
             // Sprite Stuff
             Sprite = new Sprite(texture);
@@ -34,7 +34,7 @@ namespace RuneShift.Code.GameStates.Ingame
             RotationSpeed = Direction * Rand.Value(0.0005F, 0.001F);
 
             // Create Runes
-            CreateRunes(rand, RuneCount);
+            CreateRunes(RuneCount);
             SetRunesAccordingToRotation();
         }
 
@@ -44,36 +44,31 @@ namespace RuneShift.Code.GameStates.Ingame
             NextOuterCircle = nextOuterCircle;
         }
 
-        void CreateRunes(Random rand, int count)
+        void CreateRunes(int count)
         {
-            var fire = count/4 + 3;
-            var water = fire;
-            var earth = water;
-            var air = earth;
-            Func<int> sum = () => fire + water + earth + air;
+            Element[] elements = new Element[count];
 
-            for (int i = 0; i < count; i++)
+            int offset = Rand.IntValue(4);
+            for (int i = 0; i < count; ++i)
             {
-                var type = rand.Next(0, sum.Invoke());
+                elements[i] = (Element)((i + offset) % (int)Element.Count);
+            }
+            Rand.Permutate(elements, count * 2);
 
-                if (type < fire)
-                {
-                    fire--;
-                    Runes.Add(new FireRune(Vector2.Zero));
-                } else if (type < fire + water)
-                {
-                    water--;
-                    Runes.Add(new WaterRune(Vector2.Zero));
-                }
-                else if(type < fire + water + earth)
-                {
-                    earth--;
-                    Runes.Add(new EarthRune(Vector2.Zero));
-                } else 
-                {
-                    air--;
-                    Runes.Add(new WindRune(Vector2.Zero));
-                }
+            for (int i = 0; i < count; ++i)
+            {
+                CreateRune(elements[i]);
+            }
+        }
+
+        void CreateRune(Element element)
+        {
+            switch (element)
+            {
+                case Element.Earth: Runes.Add(new EarthRune(Vector2.Zero)); break;
+                case Element.Fire: Runes.Add(new FireRune(Vector2.Zero)); break;
+                case Element.Water: Runes.Add(new WaterRune(Vector2.Zero)); break;
+                case Element.Wind: Runes.Add(new WindRune(Vector2.Zero)); break;
             }
         }
 

@@ -54,7 +54,7 @@ namespace RuneShift.Code.GameStates.Ingame.GamePlayEntities
                     NumSelectedParticles += SelectingSpeed;
                     if (NumSelectedParticles > SelectedSwarm.Count)
                         NumSelectedParticles = SelectedSwarm.Count;
-                    if (NumSelectedParticles > 1 || NumSelectedParticles >= SelectedSwarm.Count)
+                    if (NumSelectedParticles >= 1)
                     {
                         ParticleManager.TransferParticles(SelectedSwarm, Balken, (int) NumSelectedParticles);
                         NumSelectedParticles %= 1;
